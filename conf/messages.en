@@ -1,0 +1,15 @@
+html.title=The Microlist - micromata todo app
+page.title=Microlist - manage yourself
+email=E-Mail
+password=Password
+remember=Remember
+login=Login
+logout=Logout
+register=Register
+error.duplicateEmail=Sorry, this E-Mail already exists.
+error.signInFailed=Sorry, login failed. Please try again.
+github.link=Fork us on github
+github.url=https://github.com/unterstein/microlist
+projects.title=Projects
+project.add=Add Project
+project.defaultName=New Project

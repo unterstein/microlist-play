@@ -1,0 +1,26 @@
+/**
+ * Micromata
+ */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background: url(../images/bg.jpg) top center no-repeat;
+}
+
+.alert {
+  position: relative;
+}
+
+.alert ul {
+  margin-bottom: 0;
+}
+
+.alert .close {
+  position: absolute;
+  top: 6px;
+  right: 21px;
+}
+
+.side.nav input {
+  width: 175px;
+}
