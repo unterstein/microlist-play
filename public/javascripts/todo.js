@@ -27,7 +27,7 @@
     };
 
     $.fn.selectAll = function() {
-        this.setSelection(0, this.val().length);
+        this.setSelection(0, this.length);
     };
 })(jQuery);
 

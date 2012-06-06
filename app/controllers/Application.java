@@ -27,7 +27,7 @@ public class Application extends Controller {
     }
 
     public static Result registerPanel() {
-        return ok(loginPanel.render());
+        return ok(registerPanel.render());
     }
 
     // -- Javascript routing

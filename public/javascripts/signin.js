@@ -1,5 +1,9 @@
 function showRegisterPanel(element) {
-    ajaxCall(jsRoutes.controllers.Application.registerPanel, function(data) {
-        updateElement(element, data);
-    });
+    if(!$(element).find("form").length) {
+        ajaxCall(jsRoutes.controllers.Application.registerPanel(), function(data) {
+            updateElement(element, data);
+        });
+    } else {
+        updateElement(element, "");
+    }
 }
