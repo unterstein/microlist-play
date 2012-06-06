@@ -1,4 +1,4 @@
-@(content: Html)
+@(page: String)(content: Html)
 
 <!DOCTYPE html>
 
@@ -11,11 +11,11 @@
   <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/todo.css")">
 
   <script src="@routes.Assets.at("javascripts/jquery.min.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.at("js/bootstrap.min.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.at("javascripts/todo.js")" type="text/javascript"></script>
   <!-- we need all the routes for js -->
   <script type="text/javascript" src="@routes.Application.jsRoutes"></script>
-
+  <script src="@routes.Assets.at("js/bootstrap.min.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.at("javascripts/todo.js")" type="text/javascript"></script>
+  @if(page == "login") {<script type="text/javascript" src='@routes.Assets.at("javascripts/signin.js")'></script>}
 </head>
 <body data-spy="scroll" data-target=".subnav" data-offset="50">
   <div class="navbar navbar-fixed-top">

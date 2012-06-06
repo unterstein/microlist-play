@@ -4,11 +4,16 @@ import play.*;
 import play.mvc.*;
 
 import views.html.*;
+import views.html.signin.*;
 
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(login.render());
+        return ok(index.render("index"));
+    }
+
+    public static Result login() {
+        return ok(login.render("login"));
     }
 
     public static Result loginUser() {
@@ -22,7 +27,7 @@ public class Application extends Controller {
     }
 
     public static Result registerPanel() {
-        return ok();
+        return ok(loginPanel.render());
     }
 
     // -- Javascript routing

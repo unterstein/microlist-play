@@ -44,3 +44,24 @@ function doAfterAjaxHandling() {
       handleCaretPositions();
     });
 }
+
+function endsWith(element, suffix) {
+    return $(element).val().toLowerCase().match(suffix.toLowerCase() + "$") == suffix.toLowerCase();
+}
+
+function toggle(element) {
+    $(element).slideToggle(300);
+}
+
+function ajaxCall(route, successFn, errorFn, data) {
+    route.ajax({
+        success: function(data) { if(successFn) successFn(data); },
+        error:   function(data) { if(errorFn) errorFn(data); },
+        data: data
+    });
+}
+
+function updateElement(element, data) {
+    $(element).html(data);
+    doAfterAjaxHandling();
+}

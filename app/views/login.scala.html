@@ -1,10 +1,10 @@
-
-@main {
+@(page: String)
+@main(page) {
   <div wicket:id="container" class="row">
     <div class="span6">
     @views.html.signin.loginPanel()
     </div>
-    <div class="span6"><a href="#">@Messages("register")?</a></div>
+    <div class="span6"><a href="#" onClick="showRegisterPanel($('#register')); return false;">@Messages("register")?</a></div>
     <div class="span6" id="register"></div>
   </div>
 }
