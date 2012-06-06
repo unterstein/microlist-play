@@ -23,11 +23,10 @@
           data-target=".nav-collapse"> <span class="icon-bar"></span>
           <span class="icon-bar"></span> <span class="icon-bar"></span>
         </a>
-        <a class="brand" wicket:id="pageLink">@Messages("page.title")</a>
+        <a class="brand" href="@routes.Application.index()">@Messages("page.title")</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li wicket:id="navigation" class="menu_index"><a
-              wicket:id="navigationLink"></a></li>
+            <li class="menu_index"><a href="@Messages("github.url")" target="_blank">@Messages("github.link")</a></li>
           </ul>
         </div>
       </div>
@@ -51,10 +50,5 @@
 
   </div>
   <!-- /container -->
-  <script type="text/javascript">
-      Wicket.Ajax.registerPostCallHandler(function() {
-        doAfterAjaxHandling();
-      });
-    </script>
 </body>
 </html>
