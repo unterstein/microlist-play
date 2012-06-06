@@ -1,0 +1,19 @@
+@helper.form(routes.Application.loginUser,'class -> "form-horizontal") {
+  <fieldset>
+    <legend>@Messages("login")</legend>
+    <div class="alert alert-error" wicket:id="feedback"></div>
+    <div class="control-group">
+      <label class="control-label">@Messages("email")*:</label>
+      <div class="controls"><input type="text" name="email" /></div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">@Messages("password")*:</label>
+      <div class="controls"><input type="password" name="password" /></div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">@Messages("remember")?:</label>
+      <div class="controls"><input name="rememberMe" type="checkbox" /></div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-large">@Messages("login")</button>
+  </fieldset>
+}
