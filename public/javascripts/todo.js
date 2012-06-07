@@ -31,6 +31,14 @@
             this.setSelection(0, this.val().length);
         }
     };
+
+    $.fn.endsWith = function(suffix) {
+        if(this.val() != undefined) {
+            return this.val().toLowerCase().match(suffix.toLowerCase() + "$") == suffix.toLowerCase();
+        } else {
+            return false;
+        }
+    }
 })(jQuery);
 
 function handleCaretPositions() {
@@ -45,10 +53,6 @@ function doAfterAjaxHandling() {
     $(function() {
       handleCaretPositions();
     });
-}
-
-function endsWith(element, suffix) {
-    return $(element).val().toLowerCase().match(suffix.toLowerCase() + "$") == suffix.toLowerCase();
 }
 
 function toggle(element) {
