@@ -1,8 +1,8 @@
-@(page: String)
+@(page: String, form: Form[Authentication.Login])
 @main(page) {
-  <div wicket:id="container" class="row">
+  <div class="row">
     <div class="span6">
-    @views.html.signin.loginPanel()
+    @views.html.signin.loginPanel(form)
     </div>
     <div class="span6"><a href="#" onClick="showRegisterPanel($('#register')); return false;">@Messages("register")?</a></div>
     <div class="span6" id="register"></div>

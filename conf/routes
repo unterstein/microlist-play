@@ -4,12 +4,13 @@
 
 # pages
 GET     /                                  controllers.Application.index()
-GET     /login                             controllers.Application.login()
+GET     /login                             controllers.Authentication.login()
+GET     /todo                              controllers.TodoController.todo()
 
-# Authenticate
-POST    /signin/loginuser                  controllers.Application.loginUser()
-POST    /signin/registeruser               controllers.Application.registerUser()
-GET     /signin/registerpanel              controllers.Application.registerPanel()
+# Authentication
+POST    /signin/loginuser                  controllers.Authentication.loginUser()
+POST    /signin/registeruser               controllers.Authentication.registerUser()
+GET     /signin/registerpanel              controllers.Authentication.registerPanel()
 
 # Javascript routing
 GET     /assets/javascripts/routes         controllers.Application.jsRoutes()
