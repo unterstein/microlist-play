@@ -1,8 +1,5 @@
 @(registerForm: Form[Authentication.Register])
 
-@import helper._
-@import helper.twitterBootstrap._
-
 @helper.form(routes.Authentication.registerUser,'class -> "form-horizontal") {
   <fieldset>
     <legend>@Messages("register")</legend>
