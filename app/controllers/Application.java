@@ -3,13 +3,14 @@ package controllers;
 import play.Routes;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
 import play.mvc.Security;
 
 public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return TodoController.todo();
+        return Results.redirect(routes.TodoController.todo());
     }
 
 

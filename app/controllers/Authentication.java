@@ -25,14 +25,24 @@ public class Authentication extends Controller {
         if (loginForm.hasErrors()) {
             return Results.badRequest(login.render(loginForm));
         } else {
-            Controller.session(Secured.AUTH_SESSION, "" + loginForm.get().username);
-            return Results.redirect(routes.Application.index());
+            return sucessfullyLoggedIn(loginForm.get().email);
         }
     }
 
+    private static Result sucessfullyLoggedIn(String email) {
+        Controller.flash("success", Messages.get("welcome") + email);
+        Controller.session(Secured.AUTH_SESSION, "" + email);
+        return Results.redirect(routes.TodoController.todo());
+    }
+
     public static Result registerUser() {
-        // final Form<> registerForm = Controller.form(Register.class).bindFromRequest();
-        return ok();
+        final Form<Register> registerForm = Controller.form(Register.class).bindFromRequest();
+        if (registerForm.hasErrors()) {
+            Controller.flash("error", registerForm.errorsAsJson().toString()); // TODO ajax error handling
+            return Results.redirect(routes.Authentication.login());
+        } else {
+            return sucessfullyLoggedIn(registerForm.get().email);
+        }
     }
 
     public static Result registerPanel() {
@@ -40,12 +50,12 @@ public class Authentication extends Controller {
     }
 
     public static class Login {
-        public String username;
+        public String email;
         public String password;
         public boolean remember;
 
         public String validate() {
-            final User user = User.authenticate(this.username, this.password);
+            final User user = User.authenticate(this.email, this.password);
             if (user == null) {
                 return Messages.get("error.signInFailed");
             }

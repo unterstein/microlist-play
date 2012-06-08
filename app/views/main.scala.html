@@ -41,6 +41,19 @@
   <div class="container">
 
     <div class="span12 well">
+
+      @if(flash.contains("success")) {
+      <div class="alert alert-success">
+        @flash.get("success")
+      </div>
+      }
+
+      @if(flash.contains("error")) {
+      <div class="alert alert-error">
+        @flash.get("error")
+      </div>
+      }
+
       @content
     </div>
 
