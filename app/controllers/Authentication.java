@@ -32,7 +32,7 @@ public class Authentication extends Controller {
     private static Result sucessfullyLoggedIn(String email) {
         Controller.flash("success", Messages.get("welcome") + email);
         Controller.session(Secured.AUTH_SESSION, "" + email);
-        return Results.redirect(routes.TodoController.todo());
+        return Results.redirect(routes.TodoList.todo());
     }
 
     public static Result registerUser() {

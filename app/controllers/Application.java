@@ -10,7 +10,7 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return Results.redirect(routes.TodoController.todo());
+        return Results.redirect(routes.TodoList.todo());
     }
 
 

@@ -5,7 +5,7 @@
 # pages
 GET     /                                  controllers.Application.index()
 GET     /login                             controllers.Authentication.login()
-GET     /todo                              controllers.TodoController.todo()
+GET     /todo                              controllers.TodoList.todo()
 
 # Authentication
 POST    /signin/loginuser                  controllers.Authentication.loginUser()
