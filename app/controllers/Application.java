@@ -1,11 +1,9 @@
 package controllers;
 
-import play.*;
-import play.data.Form;
-import play.mvc.*;
-
-import views.html.*;
-import views.html.signin.*;
+import play.Routes;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.mvc.Security;
 
 public class Application extends Controller {
 

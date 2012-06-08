@@ -10,18 +10,24 @@ import play.data.validation.Constraints.Required;
 import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
 import views.html.login;
 import views.html.signin.registerPanel;
 
 public class Authentication extends Controller {
 
     public static Result login() {
-        return ok(login.render("login", new Form<Authentication.Login>(Authentication.Login.class)));
+        return ok(login.render(new Form<Authentication.Login>(Authentication.Login.class)));
     }
 
     public static Result loginUser() {
-        // final Form<> registerForm = Controller.form(Register.class).bindFromRequest();
-        return ok();
+        final Form<Login> loginForm = Controller.form(Login.class).bindFromRequest();
+        if (loginForm.hasErrors()) {
+            return Results.badRequest(login.render(loginForm));
+        } else {
+            Controller.session(Secured.AUTH_SESSION, "" + loginForm.get().username);
+            return Results.redirect(routes.Application.index());
+        }
     }
 
     public static Result registerUser() {
