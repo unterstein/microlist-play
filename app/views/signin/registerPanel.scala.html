@@ -3,48 +3,27 @@
 @import helper._
 @import helper.twitterBootstrap._
 
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
 @helper.form(routes.Authentication.registerUser,'class -> "form-horizontal") {
   <fieldset>
     <legend>@Messages("register")</legend>
-    @if(registerForm.hasErrors) { 
-      <p class="alert alert-error">
-        @registerForm.errors.values().map { errors =>
-            @errors.map { error =>
-              @error.message <br/>
-            }
-        }
-      </p>
-    }
-    <div class="control-group">
-      <label class="control-label">@Messages("email")*:</label>
-      <div class="controls">
-            @inputText(
-                registerForm("email"),
-                '_label -> "",
-                '_help -> ""
-            )
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label">@Messages("password")*:</label>
-      <div class="controls">
-            @inputPassword(
-                registerForm("password"),
-                '_label -> "",
-                '_help -> ""
-            )
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label">@Messages("repassword")*:</label>
-      <div class="controls">
-            @inputPassword(
-                registerForm("repassword"),
-                '_label -> "",
-                '_help -> ""
-            )
-      </div>
-    </div>
+    @inputText(
+        registerForm("email"),
+        '_label -> Messages("email"),
+        '_required -> true
+    )
+    @inputPassword(
+        registerForm("password"),
+        '_label -> Messages("password"),
+        '_required -> true
+    )
+    @inputPassword(
+        registerForm("repassword"),
+        '_label -> Messages("repassword"),
+        '_required -> true
+    )
     <button class="btn btn-primary btn-large" onClick="register(this); return false;">@Messages("register")</button>
   </fieldset>
 }
