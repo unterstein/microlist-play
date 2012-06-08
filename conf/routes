@@ -9,6 +9,7 @@ GET     /todo                              controllers.TodoList.todo()
 # Authentication
 GET     /login                             controllers.Authentication.login()
 POST    /login                             controllers.Authentication.loginUser()
+POST    /registerAjax                      controllers.Authentication.registerUserAjax()
 POST    /register                          controllers.Authentication.registerUser()
 GET     /registerpanel                     controllers.Authentication.registerPanel()
 

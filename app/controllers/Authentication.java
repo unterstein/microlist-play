@@ -40,10 +40,20 @@ public class Authentication extends Controller {
         return Results.redirect(routes.TodoList.todo());
     }
 
-    public static Result registerUser() {
+    public static Result registerUserAjax() {
         final Form<Register> registerForm = Controller.form(Register.class).bindFromRequest();
         if (registerForm.hasErrors()) {
             return ok(registerForm.errorsAsJson());
+        } else {
+            return sucessfullyLoggedIn(registerForm.get().email);
+        }
+    }
+
+    public static Result registerUser() {
+        final Form<Register> registerForm = Controller.form(Register.class).bindFromRequest();
+        if (registerForm.hasErrors()) {
+            Controller.flash("error", registerForm.errorsAsJson().toString()); // TODO ajax error handling
+            return Results.redirect(routes.Authentication.login());
         } else {
             return sucessfullyLoggedIn(registerForm.get().email);
         }
