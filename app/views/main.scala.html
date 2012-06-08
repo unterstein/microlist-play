@@ -44,12 +44,14 @@
 
       @if(flash.contains("success")) {
       <div class="alert alert-success">
+        <button class="close" data-dismiss="alert">×</button>
         @flash.get("success")
       </div>
       }
 
       @if(flash.contains("error")) {
       <div class="alert alert-error">
+        <button class="close" data-dismiss="alert">×</button>
         @flash.get("error")
       </div>
       }

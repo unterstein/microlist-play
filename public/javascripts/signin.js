@@ -9,6 +9,11 @@ function showRegisterPanel(element) {
 }
 function register(element) {
     ajaxCall(jsRoutes.controllers.Authentication.registerUserAjax(), function(data) {
-        updateElement($(element).parents("form"), data);
+        console.log(data);
+        if(data[0]=='/') {
+            window.location.href=data;
+        } else {
+            updateElement($(element).parents("form"), data);
+        }
     }, null, $(element).parents("form").serialize());
 }

@@ -10,6 +10,7 @@
     <legend>@Messages("login")</legend>
     @if(loginForm.hasGlobalErrors) { 
       <p class="alert alert-error">
+        <button class="close" data-dismiss="alert">×</button>
         @loginForm.globalError.message
       </p>
     }

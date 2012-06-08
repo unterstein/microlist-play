@@ -35,9 +35,13 @@ public class Authentication extends Controller {
     }
 
     private static Result sucessfullyLoggedIn(String email) {
-        Controller.flash("success", Messages.get("welcome") + email);
-        Controller.session(Secured.AUTH_SESSION, "" + email);
+        setUserToSession(email);
         return Results.redirect(routes.TodoList.todo());
+    }
+
+    private static void setUserToSession(String email) {
+        Controller.flash("success", Messages.get("welcome") + " " + email);
+        Controller.session(Secured.AUTH_SESSION, "" + email);
     }
 
     public static Result registerUserAjax() {
@@ -45,7 +49,8 @@ public class Authentication extends Controller {
         if (registerForm.hasErrors()) {
             return ok(registerPanel.render(registerForm));
         } else {
-            return sucessfullyLoggedIn(registerForm.get().email);
+            setUserToSession(registerForm.get().email);
+            return ok("" + routes.TodoList.todo());
         }
     }
 
