@@ -23,10 +23,11 @@
         '_label -> Messages("password"),
         '_required -> true
     )
-    <div class="control-group">
-      <label class="control-label">@Messages("remember")?:</label>
-      <div class="controls"><input name="rememberMe" type="checkbox" /></div>
-    </div>
+    @checkbox(
+        loginForm("rememberme"),
+        '_label -> Messages("remember"),
+        '_required -> true
+    )
     <button type="submit" class="btn btn-primary btn-large">@Messages("login")</button>
   </fieldset>
 }
