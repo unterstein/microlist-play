@@ -1,7 +1,12 @@
 @(form: Form[Authentication.Login])
-@main {
+
+@scripts = {
   <script type="text/javascript" src='@routes.Assets.at("javascripts/signin.js")'></script>
-} {
+}
+
+@navigation = {}
+
+@main(scripts, navigation) {
   <div class="row">
     <div class="span6">
     @views.html.signin.loginPanel(form)

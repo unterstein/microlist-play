@@ -1,4 +1,4 @@
-@(scripts: Html = Html(""))(content: Html)
+@(scripts: Html, navigation: Html)(content: Html)
 
 <!DOCTYPE html>
 
@@ -32,6 +32,7 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li class="menu_index"><a href="@Messages("github.url")" target="_blank">@Messages("github.link")</a></li>
+            @navigation
           </ul>
         </div>
       </div>

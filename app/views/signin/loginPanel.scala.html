@@ -3,7 +3,7 @@
 @import helper._
 @import helper.twitterBootstrap._
 
-@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+@implicitFieldConstructor = @{ FieldConstructor(forms.twitterBootstrapInput.render) }
 
 @helper.form(routes.Authentication.loginUser,'class -> "form-horizontal") {
   <fieldset>
