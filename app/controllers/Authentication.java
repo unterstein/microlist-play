@@ -18,7 +18,11 @@ import views.html.signin.registerPanel;
 public class Authentication extends Controller {
 
     public static Result login() {
-        return ok(login.render(new Form<Authentication.Login>(Authentication.Login.class)));
+        if (User.checkIfUserExsists(Controller.session(Secured.AUTH_SESSION))) {
+            return Results.redirect(routes.TodoList.todo());
+        } else {
+            return ok(login.render(new Form<Authentication.Login>(Authentication.Login.class)));
+        }
     }
 
     public static Result loginUser() {
@@ -39,8 +43,7 @@ public class Authentication extends Controller {
     public static Result registerUser() {
         final Form<Register> registerForm = Controller.form(Register.class).bindFromRequest();
         if (registerForm.hasErrors()) {
-            Controller.flash("error", registerForm.errorsAsJson().toString()); // TODO ajax error handling
-            return Results.redirect(routes.Authentication.login());
+            return ok(registerForm.errorsAsJson());
         } else {
             return sucessfullyLoggedIn(registerForm.get().email);
         }

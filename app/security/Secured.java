@@ -1,10 +1,10 @@
 package security;
 
-import controllers.routes;
 import models.User;
 import play.mvc.Http.Context;
 import play.mvc.Result;
 import play.mvc.Security;
+import controllers.routes;
 
 /**
  * Security token
@@ -23,7 +23,6 @@ public class Secured extends Security.Authenticator {
                 return null;
             }
         }
-
         return username;
     }
 

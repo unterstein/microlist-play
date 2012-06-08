@@ -20,6 +20,6 @@
       <label class="control-label">@Messages("repassword")*:</label>
       <div class="controls"><input type="password" name="repassword" /></div>
     </div>
-    <button type="submit" class="btn btn-primary btn-large">@Messages("register")</button>
+    <button class="btn btn-primary btn-large" onClick="register(this); return false;">@Messages("register")</button>
   </fieldset>
 }

@@ -7,3 +7,9 @@ function showRegisterPanel(element) {
         updateElement(element, "");
     }
 }
+function register(element) {
+    ajaxCall(jsRoutes.controllers.Authentication.registerUser(), function(data) {
+        console.log("blubb");
+        console.log(data);
+    }, null, $(element).parents("form").serialize());
+}
