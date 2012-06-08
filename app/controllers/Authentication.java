@@ -42,9 +42,9 @@ public class Authentication extends Controller {
     public static class Login {
         public String username;
         public String password;
+        public boolean remember;
 
         public String validate() {
-
             final User user = User.authenticate(this.username, this.password);
             if (user == null) {
                 return Messages.get("error.signInFailed");
