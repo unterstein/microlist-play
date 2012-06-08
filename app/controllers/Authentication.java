@@ -11,6 +11,7 @@ import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
+import security.Secured;
 import views.html.login;
 import views.html.signin.registerPanel;
 
