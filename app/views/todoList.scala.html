@@ -1,3 +1,5 @@
+@(projects : List[Project])
+
 @scripts = {
   <script type="text/javascript" src='@routes.Assets.at("javascripts/list.js")'></script>
 }
@@ -13,7 +15,9 @@
     </div>
     <div class="span3">
       <h2>@Messages("projects.title")</h2>
-      <div wicket:id="projectList"></div>
+      @projects.map { project =>
+        @project.name
+      }
     </div>
   </div>
 }

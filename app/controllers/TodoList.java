@@ -1,5 +1,7 @@
 package controllers;
 
+import models.Project;
+import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
@@ -9,6 +11,6 @@ import security.Secured;
 public class TodoList extends Controller {
 
     public static Result todo() {
-        return ok(views.html.todoList.render());
+        return ok(views.html.todoList.render(Project.getProjectsByUser(User.getUserByEMail(Controller.session(Secured.AUTH_SESSION)))));
     }
 }
