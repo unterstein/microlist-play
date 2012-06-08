@@ -1,5 +1,8 @@
 @(registerForm: Form[Authentication.Register])
 
+@import helper._
+@import helper.twitterBootstrap._
+
 @helper.form(routes.Authentication.registerUser,'class -> "form-horizontal") {
   <fieldset>
     <legend>@Messages("register")</legend>
@@ -14,15 +17,33 @@
     }
     <div class="control-group">
       <label class="control-label">@Messages("email")*:</label>
-      <div class="controls"><input type="text" name="email" /></div>
+      <div class="controls">
+            @inputText(
+                registerForm("email"),
+                '_label -> "",
+                '_help -> ""
+            )
+      </div>
     </div>
     <div class="control-group">
       <label class="control-label">@Messages("password")*:</label>
-      <div class="controls"><input type="password" name="password" /></div>
+      <div class="controls">
+            @inputPassword(
+                registerForm("password"),
+                '_label -> "",
+                '_help -> ""
+            )
+      </div>
     </div>
     <div class="control-group">
       <label class="control-label">@Messages("repassword")*:</label>
-      <div class="controls"><input type="password" name="repassword" /></div>
+      <div class="controls">
+            @inputPassword(
+                registerForm("repassword"),
+                '_label -> "",
+                '_help -> ""
+            )
+      </div>
     </div>
     <button class="btn btn-primary btn-large" onClick="register(this); return false;">@Messages("register")</button>
   </fieldset>
