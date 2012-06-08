@@ -73,6 +73,10 @@ public class Authentication extends Controller {
         public String password;
         public boolean remember;
 
+        public Login() {
+            this.remember = true;
+        }
+
         public String validate() {
             final User user = User.authenticate(this.email, this.password);
             if (user == null) {
