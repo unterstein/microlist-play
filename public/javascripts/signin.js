@@ -9,7 +9,6 @@ function showRegisterPanel(element) {
 }
 function register(element) {
     ajaxCall(jsRoutes.controllers.Authentication.registerUserAjax(), function(data) {
-        console.log("blubb");
-        console.log(data);
+        updateElement($(element).parents("form"), data);
     }, null, $(element).parents("form").serialize());
 }

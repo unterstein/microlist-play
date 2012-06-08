@@ -1,11 +1,18 @@
-@(form: Form[Authentication.Register])
+@(registerForm: Form[Authentication.Register])
+
+@import helper._
+@import helper.twitterBootstrap._
 
 @helper.form(routes.Authentication.registerUser,'class -> "form-horizontal") {
   <fieldset>
     <legend>@Messages("register")</legend>
-    @if(form.hasGlobalErrors) { 
+    @if(registerForm.hasErrors) { 
       <p class="alert alert-error">
-        @form.globalError.message
+        @registerForm.errors.values().map { errors =>
+            @errors.map { error =>
+              @error.message <br/>
+            }
+        }
       </p>
     }
     <div class="control-group">

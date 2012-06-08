@@ -1,11 +1,18 @@
-@(form: Form[Authentication.Login])
+@(loginForm: Form[Authentication.Login])
+
+@import helper._
+@import helper.twitterBootstrap._
 
 @helper.form(routes.Authentication.loginUser,'class -> "form-horizontal") {
   <fieldset>
     <legend>@Messages("login")</legend>
-    @if(form.hasGlobalErrors) { 
+    @if(loginForm.hasErrors) { 
       <p class="alert alert-error">
-        @form.globalError.message
+        @loginForm.errors.values().map { errors =>
+            @errors.map { error =>
+              @error.message <br/>
+            }
+        }
       </p>
     }
     <div class="control-group">

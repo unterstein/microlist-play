@@ -43,7 +43,7 @@ public class Authentication extends Controller {
     public static Result registerUserAjax() {
         final Form<Register> registerForm = Controller.form(Register.class).bindFromRequest();
         if (registerForm.hasErrors()) {
-            return ok(registerForm.errorsAsJson());
+            return ok(registerPanel.render(registerForm));
         } else {
             return sucessfullyLoggedIn(registerForm.get().email);
         }
