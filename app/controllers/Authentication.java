@@ -64,7 +64,12 @@ public class Authentication extends Controller {
     }
 
     public static class Login {
+        @Formats.NonEmpty
+        // TODO i18n
+        @Required(message = "Email is required")
         public String email;
+        // TODO i18n
+        @Required(message = "Password is needed")
         public String password;
         public boolean remember;
 

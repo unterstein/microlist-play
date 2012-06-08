@@ -3,26 +3,26 @@
 @import helper._
 @import helper.twitterBootstrap._
 
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
 @helper.form(routes.Authentication.loginUser,'class -> "form-horizontal") {
   <fieldset>
     <legend>@Messages("login")</legend>
-    @if(loginForm.hasErrors) { 
+    @if(loginForm.hasGlobalErrors) { 
       <p class="alert alert-error">
-        @loginForm.errors.values().map { errors =>
-            @errors.map { error =>
-              @error.message <br/>
-            }
-        }
+        @loginForm.globalError.message
       </p>
     }
-    <div class="control-group">
-      <label class="control-label">@Messages("email")*:</label>
-      <div class="controls"><input type="text" name="email" /></div>
-    </div>
-    <div class="control-group">
-      <label class="control-label">@Messages("password")*:</label>
-      <div class="controls"><input type="password" name="password" /></div>
-    </div>
+    @inputText(
+        loginForm("email"),
+        '_label -> Messages("email"),
+        '_required -> true
+    )
+    @inputPassword(
+        loginForm("password"),
+        '_label -> Messages("password"),
+        '_required -> true
+    )
     <div class="control-group">
       <label class="control-label">@Messages("remember")?:</label>
       <div class="controls"><input name="rememberMe" type="checkbox" /></div>
