@@ -16,7 +16,7 @@
     <div class="span3">
       <h2>@Messages("projects.title")</h2>
       <br/>
-      <button onClick="" class="btn btn-primary btn-large">@Messages("project.add")</button>
+      <button onClick="addProject($(this).siblings('.projects'))" class="btn btn-primary btn-large">@Messages("project.add")</button>
       <br/><br/>
       <div class="projects">
         @views.html.todo.projectListPanel(projects)
