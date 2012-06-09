@@ -18,14 +18,12 @@ public class TodoList extends Controller {
     }
 
     public static Result projects() {
-        String email = Controller.session(Secured.AUTH_SESSION);
-        return ok(projectListPanel.render(Project.getProjectsByUser(User.getUserByEMail(email))));
+        return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser())));
     }
 
     public static Result addProject() {
-        String email = Controller.session(Secured.AUTH_SESSION);
         Project project = new Project();
-        User user = User.getUserByEMail(email);
+        User user = MicroSession.getUser();
         project.user = user;
         project.name = Messages.get("project.defaultName");
         Project.create(project);
@@ -34,8 +32,22 @@ public class TodoList extends Controller {
 
     public static Result updateProject(String id, String name) {
         Project project = Project.getProjectById(Long.valueOf(id));
-        project.name = name;
-        project.save();
-        return ok(projectPanel.render(project));
+        if (project.user.id == MicroSession.getUser().id) {
+            project.name = name;
+            project.save();
+            return ok(projectPanel.render(project));
+        } else {
+            return badRequest(); // TODO
+        }
+    }
+
+    public static Result removeProject(String id) {
+        Project project = Project.getProjectById(Long.valueOf(id));
+        if (project.user.id == MicroSession.getUser().id) {
+            Project.remove(project);
+            return ok();
+        } else {
+            return badRequest(); // TODO
+        }
     }
 }

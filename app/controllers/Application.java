@@ -24,7 +24,8 @@ public class Application extends Controller {
                 controllers.routes.javascript.Authentication.registerPanel(),
                 controllers.routes.javascript.TodoList.projects(),
                 controllers.routes.javascript.TodoList.addProject(),
-                controllers.routes.javascript.TodoList.updateProject()
+                controllers.routes.javascript.TodoList.updateProject(),
+                controllers.routes.javascript.TodoList.removeProject()
                 ));
     }
 }

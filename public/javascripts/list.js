@@ -45,7 +45,15 @@ function customAfterAjaxHandler() {
         toggleText($(this).siblings('.icon-edit'), event);
         return false;
     });
+    $('.side.nav .icon-trash').click(function(event) {
+        var element = $(this).parents('li');
+        ajaxCall(jsRoutes.controllers.TodoList.removeProject($(element).attr('id').replace('project_', '')), function(data) {
+            replaceElement($(element), '');
+        });
+        return false;
+    });
 }
+
 $(function() {
     customAfterAjaxHandler();
 });

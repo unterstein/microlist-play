@@ -47,6 +47,15 @@ public class Project extends Model {
     }
 
     /**
+     * Deletes the project from the database
+     * 
+     * @param project
+     */
+    public static void remove(final Project project) {
+        project.delete();
+    }
+
+    /**
      * Gets a {@link Project} by the given id
      * 
      * @param id
