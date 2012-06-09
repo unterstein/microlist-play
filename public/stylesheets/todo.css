@@ -24,3 +24,9 @@ body {
 .side.nav input {
   width: 175px;
 }
+
+.task {
+  background-color: #DDD;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

@@ -3,7 +3,7 @@
 @{
   val tasks = Task.getTasksByProject(project)
   tasks.map { task =>
-    <div class="well" style="background-color: #DDD;">
+    <div class="well task">
       { task.title }
     </div>
   }
