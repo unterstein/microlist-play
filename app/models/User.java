@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import play.data.format.Formats;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
+import play.i18n.Messages;
 
 @Entity
 public class User extends Model {
@@ -24,7 +25,7 @@ public class User extends Model {
     public String email;
 
     public User() {
-        Project project = Project.c
+        Project.create(Messages.get("project.defaultName"), this);
     }
 
     private static Model.Finder<String, User> find = new Model.Finder<String, User>(String.class, User.class);
