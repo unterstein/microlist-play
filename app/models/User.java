@@ -24,10 +24,6 @@ public class User extends Model {
     @Column(unique = true)
     public String email;
 
-    public User() {
-        Project.create(Messages.get("project.defaultName"), this);
-    }
-
     private static Model.Finder<String, User> find = new Model.Finder<String, User>(String.class, User.class);
 
     /**
@@ -40,6 +36,7 @@ public class User extends Model {
         User user = new User();
         user.email = email;
         user.password = password;
+        Project.create(Messages.get("project.defaultName"), user);
         user.save();
     }
 
