@@ -42,7 +42,7 @@
 })(jQuery);
 
 function handleCaretPositions() {
-    $(".nav input").selectAll();
+    $(".nav input:visible").selectAll();
 }
 
 $(function() {
