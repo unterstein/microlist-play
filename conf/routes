@@ -13,7 +13,7 @@ POST    /register                          controllers.Authentication.registerUs
 GET     /registerpanel                     controllers.Authentication.registerPanel()
 
 # Todo
-GET     /todo/{id}/{name}                  controllers.TodoList.update(id, name)
+PUT     /todo/:id/:name                    controllers.TodoList.updateProject(id, name)
 GET     /todo/                             controllers.TodoList.projects()
 POST    /todo/                             controllers.TodoList.addProject()
 

@@ -71,3 +71,8 @@ function updateElement(element, data) {
     $(element).html(data);
     doAfterAjaxHandling();
 }
+
+function replaceElement(element, data) {
+    $(element).replaceWith(data);
+    doAfterAjaxHandling();
+}

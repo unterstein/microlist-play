@@ -11,6 +11,9 @@ function toggleText(element, event) {
             }
         })
     } else {
+        var id = $(element).parents('li').attr('id').replace('project_', '');
+        var name = $(element).siblings("input").val();
+        updateProject($(element).parents('li'), id, name);
         $(document).unbind('click');
     }
     doAfterAjaxHandling();
@@ -19,9 +22,9 @@ function toggleText(element, event) {
     }
 }
 
-function updateProject(project, element) {
-    ajaxCall(jsRoutes.controllers.TodoList.addProject(), function(data) {
-        updateElement(element, data);
+function updateProject(element, id, name) {
+    ajaxCall(jsRoutes.controllers.TodoList.updateProject(id, name), function(data) {
+        replaceElement(element, data);
         customAfterAjaxHandler();
     });
 }

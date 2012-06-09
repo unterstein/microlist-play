@@ -32,7 +32,7 @@ public class TodoList extends Controller {
         return ok(projectListPanel.render(Project.getProjectsByUser(user)));
     }
 
-    public static Result update(String id, String name) {
+    public static Result updateProject(String id, String name) {
         Project project = Project.getProjectById(Long.valueOf(id));
         project.name = name;
         project.save();

@@ -1,8 +1,8 @@
 @(project : Project)
-<li>
+<li id="project_@project.id">
   <a href="#" onClick="return false;">
     <span>@project.name</span>
-    <input type="text" onChange="updateProject(this, $(this).parents('li'))); return false;" style="display:none;" value="@project.name" />
+    <input type="text" style="display:none;" value="@project.name" />
     <i style="float: right;" class="icon-trash" wicket:id="delete"></i>
     <i style="float: right;" class="icon-edit"></i>
   </a>
