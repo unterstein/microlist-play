@@ -17,11 +17,13 @@ public class TodoList extends Controller {
         return ok(views.html.todoList.render(Project.getProjectsByUser(User.getUserByEMail(Controller.session(Secured.AUTH_SESSION)))));
     }
 
-    public static Result projects(String email) {
+    public static Result projects() {
+        String email = Controller.session(Secured.AUTH_SESSION);
         return ok(projectListPanel.render(Project.getProjectsByUser(User.getUserByEMail(email))));
     }
 
-    public static Result addProject(String email) {
+    public static Result addProject() {
+        String email = Controller.session(Secured.AUTH_SESSION);
         Project project = new Project();
         User user = User.getUserByEMail(email);
         project.user = user;
