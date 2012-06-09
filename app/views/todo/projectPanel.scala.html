@@ -1,0 +1,9 @@
+@(project : Project)
+<li>
+  <a href="#" onClick="return false;">
+    <span>@project.name</span>
+    <input type="text" onChange="updateNavi($(this).parents('li'))); return false;" style="display:none;" value="@project.name" />
+    <i style="float: right;" class="icon-trash" wicket:id="delete"></i>
+    <i style="float: right;" class="icon-edit" onClick="toggleText(this); return false;"></i>
+  </a>
+</li>

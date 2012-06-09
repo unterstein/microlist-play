@@ -21,7 +21,9 @@ public class Application extends Controller {
         response().setContentType("text/javascript");
         return ok(Routes.javascriptRouter("jsRoutes",
                 controllers.routes.javascript.Authentication.registerUser(),
-                controllers.routes.javascript.Authentication.registerPanel()
+                controllers.routes.javascript.Authentication.registerPanel(),
+                controllers.routes.javascript.TodoList.projects(),
+                controllers.routes.javascript.TodoList.addProject()
                 ));
     }
 }

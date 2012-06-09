@@ -14,6 +14,8 @@ GET     /registerpanel                     controllers.Authentication.registerPa
 
 # Todo
 GET     /todo/{id}/{name}                  controllers.TodoList.update(id, name)
+GET     /todo/{email}                      controllers.TodoList.projects(email)
+POST    /todo/{email}                      controllers.TodoList.addProject(email)
 
 # Javascript routing
 GET     /assets/javascripts/routes         controllers.Application.jsRoutes()

@@ -16,13 +16,11 @@
     <div class="span3">
       <h2>@Messages("projects.title")</h2>
       <br/>
-      <button wicket:id="addLink" class="btn btn-primary btn-large">@Messages("project.add")</button>
+      <button onClick="" class="btn btn-primary btn-large">@Messages("project.add")</button>
       <br/><br/>
-      <ul class="side nav nav-tabs nav-stacked">
-        @projects.map { project =>
-          @views.html.todo.projectListPanel(project)
-        }
-      </ul>
+      <div class="projects">
+        @views.html.todo.projectListPanel(projects)
+      </div>
     </div>
   </div>
 }
