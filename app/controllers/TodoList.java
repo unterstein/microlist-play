@@ -22,12 +22,8 @@ public class TodoList extends Controller {
     }
 
     public static Result addProject() {
-        Project project = new Project();
-        User user = MicroSession.getUser();
-        project.user = user;
-        project.name = Messages.get("project.defaultName");
-        Project.create(project);
-        return ok(projectListPanel.render(Project.getProjectsByUser(user)));
+        Project.create(Messages.get("project.defaultName"));
+        return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser())));
     }
 
     public static Result updateProject(String id, String name) {

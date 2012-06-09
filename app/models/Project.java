@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import controllers.MicroSession;
+
 import play.data.format.Formats;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -21,6 +23,7 @@ public class Project extends Model {
     public String name;
 
     @OneToOne
+    @Required
     public User user;
 
     private static Model.Finder<Long, Project> find = new Model.Finder<Long, Project>(Long.class, Project.class);
@@ -33,17 +36,9 @@ public class Project extends Model {
     public static Project create(final String name) {
         Project project = new Project();
         project.name = name;
+        project.user = MicroSession.getUser();
         project.save();
         return project;
-    }
-
-    /**
-     * Saves the project to the database
-     * 
-     * @param project
-     */
-    public static void create(final Project project) {
-        project.save();
     }
 
     /**
@@ -66,7 +61,7 @@ public class Project extends Model {
     }
 
     /**
-     * Gets a {@link List} of {@link Project}s for the given user
+     * Gets a {@link List} of {@link Project}s for the given {@link User}
      * 
      * @param user
      * @return

@@ -10,6 +10,17 @@ create table project (
   constraint pk_project primary key (id))
 ;
 
+create table task (
+  id                        bigint auto_increment not null,
+  title                     varchar(255),
+  user_id                   bigint,
+  description               varchar(255),
+  finished                  tinyint(1) default 0,
+  due_date                  datetime,
+  project_id                bigint,
+  constraint pk_task primary key (id))
+;
+
 create table user (
   id                        bigint auto_increment not null,
   password                  varchar(255),
@@ -20,6 +31,10 @@ create table user (
 
 alter table project add constraint fk_project_user_1 foreign key (user_id) references user (id) on delete restrict on update restrict;
 create index ix_project_user_1 on project (user_id);
+alter table task add constraint fk_task_user_2 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_task_user_2 on task (user_id);
+alter table task add constraint fk_task_project_3 foreign key (project_id) references project (id) on delete restrict on update restrict;
+create index ix_task_project_3 on task (project_id);
 
 
 
@@ -28,6 +43,8 @@ create index ix_project_user_1 on project (user_id);
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table project;
+
+drop table task;
 
 drop table user;
 
