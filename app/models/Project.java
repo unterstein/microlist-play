@@ -31,14 +31,26 @@ public class Project extends Model {
     /**
      * Saves the project to the database
      * 
-     * @param project
+     * @param name
+     * @param user
+     * @return
      */
-    public static Project create(final String name) {
+    public static Project create(final String name, final User user) {
         Project project = new Project();
         project.name = name;
-        project.user = MicroSession.getUser();
+        project.user = user;
         project.save();
         return project;
+    }
+
+    /**
+     * Saves the project to the database
+     * 
+     * @param name
+     * @return
+     */
+    public static Project create(final String name) {
+        return create(name, MicroSession.getUser());
     }
 
     /**
@@ -68,5 +80,9 @@ public class Project extends Model {
      */
     public static List<Project> getProjectsByUser(final User user) {
         return find.where().eq("user", user).findList();
+    }
+
+    public static Project getDefaultProject(final User user) {
+        return find.where().eq("user", user).findList().get(0);
     }
 }

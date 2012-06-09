@@ -23,14 +23,22 @@ public class User extends Model {
     @Column(unique = true)
     public String email;
 
+    public User() {
+        Project project = Project.c
+    }
+
     private static Model.Finder<String, User> find = new Model.Finder<String, User>(String.class, User.class);
 
     /**
      * Saves the user to the database
      * 
-     * @param user
+     * @param email
+     * @param password
      */
-    public static void create(final User user) {
+    public static void create(final String email, final String password) {
+        User user = new User();
+        user.email = email;
+        user.password = password;
         user.save();
     }
 

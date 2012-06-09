@@ -14,7 +14,8 @@ import views.html.todo.projectPanel;
 public class TodoList extends Controller {
 
     public static Result todo() {
-        return ok(views.html.todoList.render(Project.getProjectsByUser(User.getUserByEMail(Controller.session(Secured.AUTH_SESSION)))));
+        User user = MicroSession.getUser();
+        return ok(views.html.todoList.render(Project.getProjectsByUser(user), Project.getDefaultProject(user)));
     }
 
     public static Result projects() {

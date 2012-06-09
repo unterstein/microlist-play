@@ -106,10 +106,7 @@ public class Authentication extends Controller {
                 return Messages.get("error.duplicateEmail");
             }
 
-            final User user = new User();
-            user.email = this.email;
-            user.password = this.password;
-            User.create(user);
+            User.create(this.email, this.password);
 
             return null;
         }
