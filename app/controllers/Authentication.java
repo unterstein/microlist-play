@@ -44,23 +44,13 @@ public class Authentication extends Controller {
         Controller.session(Secured.AUTH_SESSION, "" + email);
     }
 
-    public static Result registerUserAjax() {
+    public static Result registerUser() {
         final Form<Register> registerForm = Controller.form(Register.class).bindFromRequest();
         if (registerForm.hasErrors()) {
             return ok(registerPanel.render(registerForm));
         } else {
             setUserToSession(registerForm.get().email);
             return ok("" + routes.TodoList.todo());
-        }
-    }
-
-    public static Result registerUser() {
-        final Form<Register> registerForm = Controller.form(Register.class).bindFromRequest();
-        if (registerForm.hasErrors()) {
-            Controller.flash("error", registerForm.errorsAsJson().toString()); // TODO ajax error handling
-            return Results.redirect(routes.Authentication.login());
-        } else {
-            return sucessfullyLoggedIn(registerForm.get().email);
         }
     }
 

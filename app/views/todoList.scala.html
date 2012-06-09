@@ -20,14 +20,7 @@
       <br/><br/>
       <ul class="side nav nav-tabs nav-stacked">
         @projects.map { project =>
-        <li>
-          <a href="#" onClick="return false;">
-            <span>@project.name</span>
-            <input type="text" onChange="" style="display:none;" value="@project.name" />
-            <i style="float: right;" class="icon-trash" wicket:id="delete"></i>
-            <i style="float: right;" class="icon-edit" onClick="toggleText(this); return false;"></i>
-          </a>
-        </li>
+          @views.html.todo.projectListPanel(project)
         }
       </ul>
     </div>

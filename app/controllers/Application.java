@@ -20,7 +20,7 @@ public class Application extends Controller {
     public static Result jsRoutes() {
         response().setContentType("text/javascript");
         return ok(Routes.javascriptRouter("jsRoutes",
-                controllers.routes.javascript.Authentication.registerUserAjax(),
+                controllers.routes.javascript.Authentication.registerUser(),
                 controllers.routes.javascript.Authentication.registerPanel()
                 ));
     }

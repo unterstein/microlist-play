@@ -8,9 +8,9 @@ function showRegisterPanel(element) {
     }
 }
 function register(element) {
-    ajaxCall(jsRoutes.controllers.Authentication.registerUserAjax(), function(data) {
+    ajaxCall(jsRoutes.controllers.Authentication.registerUser(), function(data) {
         console.log(data);
-        if(data[0]=='/') {
+        if(data[0] == '/') {
             window.location.href=data;
         } else {
             updateElement($(element).parents("form"), data);
