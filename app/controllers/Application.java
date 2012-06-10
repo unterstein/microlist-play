@@ -11,7 +11,7 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return Results.redirect(routes.TodoList.todo());
+        return Results.redirect(routes.TodoList.todoDefault());
     }
 
 
@@ -22,7 +22,6 @@ public class Application extends Controller {
         return ok(Routes.javascriptRouter("jsRoutes",
                 controllers.routes.javascript.Authentication.registerUser(),
                 controllers.routes.javascript.Authentication.registerPanel(),
-                controllers.routes.javascript.TodoList.projects(),
                 controllers.routes.javascript.TodoList.addProject(),
                 controllers.routes.javascript.TodoList.updateProject(),
                 controllers.routes.javascript.TodoList.removeProject(),

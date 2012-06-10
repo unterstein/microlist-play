@@ -41,6 +41,12 @@ function customAfterAjaxHandler() {
         toggleText($(this), event);
         return false;
     });
+    $('.side.nav input').bind('keyup', function(e) {
+        var key = e.keyCode || e.which;
+        if (key === 13) {
+            $(document).click();
+        }
+    });
     $('.side.nav span').click(function(event) {
         toggleText($(this).siblings('.icon-edit'), event);
         return false;

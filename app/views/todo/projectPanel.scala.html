@@ -1,6 +1,6 @@
 @(project : Project, defaultList: Boolean)
 <li id="project_@project.id">
-  <a href="#" onClick="return false;">
+  <a href="@routes.TodoList.todo(project.id.toString)">
     <span>@project.name</span>
     <input type="text" style="display:none;" value="@project.name" />
     @if(defaultList == false) {

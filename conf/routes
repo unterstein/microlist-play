@@ -4,7 +4,8 @@
 
 # pages
 GET     /                                  controllers.Application.index()
-GET     /todo                              controllers.TodoList.todo()
+GET     /todo                              controllers.TodoList.todoDefault()
+GET     /todo/:id                          controllers.TodoList.todo(id)
 
 # Authentication
 GET     /login                             controllers.Authentication.login()
@@ -15,7 +16,6 @@ GET     /registerpanel                     controllers.Authentication.registerPa
 
 # Todo
 PUT     /todo/:id/:name                    controllers.TodoList.updateProject(id, name)
-GET     /todo/                             controllers.TodoList.projects()
 POST    /todo/                             controllers.TodoList.addProject()
 DELETE  /todo/:id                          controllers.TodoList.removeProject(id)
 

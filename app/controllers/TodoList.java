@@ -15,14 +15,25 @@ import views.html.todo.taskListPanel;
 @Security.Authenticated(Secured.class)
 public class TodoList extends Controller {
 
-    public static Result todo() {
+    public static Result todoDefault() {
         User user = MicroSession.getUser();
         return ok(views.html.todoList.render(Project.getProjectsByUser(user), Project.getDefaultProject(user)));
     }
 
-    public static Result projects() {
-        return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser())));
+    public static Result todo(String projectId) {
+        User user = MicroSession.getUser();
+        Project project = Project.getProjectById(Long.valueOf(projectId));
+        if (project != null && project.user.id == user.id) {
+            return ok(views.html.todoList.render(Project.getProjectsByUser(user), project));
+        } else {
+            return badRequest();
+        }
     }
+
+    //
+    // public static Result projects() {
+    // return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser())));
+    // }
 
     public static Result addTask(String projectId, String taskName) {
         Project project = Project.getProjectById(Long.valueOf(projectId));

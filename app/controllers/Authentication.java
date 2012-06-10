@@ -19,7 +19,7 @@ public class Authentication extends Controller {
 
     public static Result login() {
         if (User.checkIfUserExsists(Controller.session(Secured.AUTH_SESSION))) {
-            return Results.redirect(routes.TodoList.todo());
+            return Results.redirect(routes.TodoList.todoDefault());
         } else {
             return ok(login.render(new Form<Authentication.Login>(Authentication.Login.class)));
         }
@@ -36,7 +36,7 @@ public class Authentication extends Controller {
 
     private static Result sucessfullyLoggedIn(String email) {
         setUserToSession(email);
-        return Results.redirect(routes.TodoList.todo());
+        return Results.redirect(routes.TodoList.todoDefault());
     }
 
     private static void setUserToSession(String email) {
@@ -50,7 +50,7 @@ public class Authentication extends Controller {
             return ok(registerPanel.render(registerForm));
         } else {
             setUserToSession(registerForm.get().email);
-            return ok("" + routes.TodoList.todo());
+            return ok("" + routes.TodoList.todoDefault());
         }
     }
 
