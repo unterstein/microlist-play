@@ -1,9 +1,20 @@
-@(project: Project)
+@(project: Project, addTaskForm: Form[Task])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+
+@inputText(
+    addTaskForm("name"),
+    '_label -> null,
+    'placeholder -> Messages("task.new"),
+    'class -> "span8"
+)
 
 @{
   val tasks = Task.getTasksByProject(project)
   tasks.map { task =>
-    <div class="well task">
+    <div class="well task span8">
       { task.title }
     </div>
   }

@@ -1,7 +1,9 @@
 package controllers;
 
 import models.Project;
+import models.Task;
 import models.User;
+import play.data.Form;
 import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -15,7 +17,7 @@ public class TodoList extends Controller {
 
     public static Result todo() {
         User user = MicroSession.getUser();
-        return ok(views.html.todoList.render(Project.getProjectsByUser(user), Project.getDefaultProject(user)));
+        return ok(views.html.todoList.render(Project.getProjectsByUser(user), Project.getDefaultProject(user), new Form<Task>(Task.class)));
     }
 
     public static Result projects() {

@@ -58,6 +58,11 @@ public class Authentication extends Controller {
         return ok(registerPanel.render(new Form<Authentication.Register>(Authentication.Register.class)));
     }
 
+    public static Result logout() {
+        Controller.session().clear();
+        return Results.redirect(routes.Authentication.login());
+    }
+
     public static class Login {
         @Formats.NonEmpty
         // TODO i18n

@@ -16,5 +16,6 @@ projects.title=Projects
 project.add=Add Project
 project.defaultName=New Project
 project.inboxName=Inbox
+task.new=New task
 welcome=Welcome to the microlist application: 
 hello=Hello
