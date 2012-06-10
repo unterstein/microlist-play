@@ -36,7 +36,7 @@ public class User extends Model {
         User user = new User();
         user.email = email;
         user.password = password;
-        Project.create(Messages.get("project.defaultName"), user);
+        Project.create(Messages.get("project.inboxName"), user);
         user.save();
     }
 

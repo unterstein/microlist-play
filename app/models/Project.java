@@ -93,7 +93,7 @@ public class Project extends Model {
             return list.get(0);
         } else {
             // at least the default project should exist, lets create!
-            return Project.create(Messages.get("project.defaultName"), user);
+            return Project.create(Messages.get("project.inboxName"), user);
         }
     }
 }
