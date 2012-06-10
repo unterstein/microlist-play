@@ -33,6 +33,7 @@ function addProject(element) {
     ajaxCall(jsRoutes.controllers.TodoList.addProject(), function(data) {
         updateElement(element, data);
         customAfterAjaxHandler();
+        $('.side.nav .icon-edit:last').click();
     });
 }
 
