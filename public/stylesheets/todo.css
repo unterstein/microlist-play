@@ -35,3 +35,8 @@ input.newTask {
   padding-bottom: 5px;
   margin-left: 0px;
 }
+
+.container h2.title {
+  text-align:center;
+  margin-bottom: 15px;
+}
