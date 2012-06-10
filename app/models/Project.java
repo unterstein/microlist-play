@@ -11,6 +11,7 @@ import controllers.MicroSession;
 import play.data.format.Formats;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
+import play.i18n.Messages;
 
 @Entity
 public class Project extends Model {
@@ -59,6 +60,10 @@ public class Project extends Model {
      * @param project
      */
     public static void remove(final Project project) {
+        List<Task> tasks = Task.getTasksByProject(project);
+        for (Task task : tasks) {
+            Task.remove(task);
+        }
         project.delete();
     }
 
@@ -83,6 +88,12 @@ public class Project extends Model {
     }
 
     public static Project getDefaultProject(final User user) {
-        return find.where().eq("user", user).findList().get(0);
+        List<Project> list = find.where().eq("user", user).findList();
+        if (list.size() > 0) {
+            return list.get(0);
+        } else {
+            // at least the default project should exist, lets create!
+            return Project.create(Messages.get("project.defaultName"), user);
+        }
     }
 }

@@ -1,6 +1,12 @@
 @(projects : List[Project])
 <ul class="side nav nav-tabs nav-stacked">
-  @projects.map { project =>
-    @views.html.todo.projectPanel(project)
+  @{
+    var defaultList = true;
+    projects.map { project =>
+      {
+        views.html.todo.projectPanel(project, defaultList)
+        defaultList = false;
+      }
+    }
   }
 </ul>

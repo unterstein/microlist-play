@@ -59,4 +59,13 @@ public class Task extends Model {
     public static List<Task> getTasksByProject(Project project) {
         return find.where().eq("project", project).findList();
     }
+
+    /**
+     * Deletes the task from the database
+     * 
+     * @param task
+     */
+    public static void remove(Task task) {
+        task.delete();
+    }
 }

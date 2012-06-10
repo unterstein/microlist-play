@@ -1,9 +1,11 @@
-@(project : Project)
+@(project : Project, defaultList: Boolean)
 <li id="project_@project.id">
   <a href="#" onClick="return false;">
     <span>@project.name</span>
     <input type="text" style="display:none;" value="@project.name" />
+    @if(defaultList == false) {
     <i style="float: right;" class="icon-trash"></i>
     <i style="float: right;" class="icon-edit"></i>
+    }
   </a>
 </li>

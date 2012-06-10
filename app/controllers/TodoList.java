@@ -29,10 +29,11 @@ public class TodoList extends Controller {
 
     public static Result updateProject(String id, String name) {
         Project project = Project.getProjectById(Long.valueOf(id));
-        if (project.user.id == MicroSession.getUser().id) {
+        if (project.user.id == MicroSession.getUser().id && project.id != Project.getDefaultProject(project.user).id) {
             project.name = name;
             project.save();
-            return ok(projectPanel.render(project));
+            // default project could not be updated, so we can deliver false here
+            return ok(projectPanel.render(project, false));
         } else {
             return badRequest(); // TODO
         }
