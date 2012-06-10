@@ -68,6 +68,9 @@ function customAfterAjaxHandler() {
             });
         }
     });
+    $('.task .taskbox').change(function(event) {
+        ajaxCall(jsRoutes.controllers.TodoList.changeTaskState($(this).data("task"), $(this).is(':checked')));
+    });
 }
 
 $(function() {

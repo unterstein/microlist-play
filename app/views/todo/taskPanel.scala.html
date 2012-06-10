@@ -1,5 +1,9 @@
 @(task : Task)
 
+@import helper._
+@import helper.twitterBootstrap._
+
 <div class="well task span8">
+  <input type="checkbox" name="finished" @if(task.finished) {checked} data-task="@task.id" class="taskbox" />
   @task.title
 </div>

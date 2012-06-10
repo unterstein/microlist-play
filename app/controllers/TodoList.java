@@ -30,10 +30,17 @@ public class TodoList extends Controller {
         }
     }
 
-    //
-    // public static Result projects() {
-    // return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser())));
-    // }
+    public static Result changeTaskState(String taskId, String state) {
+        Task task = Task.getTasksById(Long.valueOf(taskId));
+        User user = MicroSession.getUser();
+        if (task != null && task.project.user.id == user.id) {
+            task.finished = "true".equals(state) ? true : false;
+            task.save();
+            return ok();
+        } else {
+            return badRequest();
+        }
+    }
 
     public static Result addTask(String projectId, String taskName) {
         Project project = Project.getProjectById(Long.valueOf(projectId));

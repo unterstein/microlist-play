@@ -61,6 +61,16 @@ public class Task extends Model {
     }
 
     /**
+     * Gets a {@link Task} for the given id
+     * 
+     * @param id
+     * @return
+     */
+    public static Task getTasksById(Long id) {
+        return find.where().eq("id", id).findUnique();
+    }
+
+    /**
      * Deletes the task from the database
      * 
      * @param task

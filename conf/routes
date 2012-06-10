@@ -18,8 +18,8 @@ GET     /registerpanel                     controllers.Authentication.registerPa
 PUT     /todo/:id/:name                    controllers.TodoList.updateProject(id, name)
 POST    /todo/                             controllers.TodoList.addProject()
 DELETE  /todo/:id                          controllers.TodoList.removeProject(id)
-
 POST    /task/:projectId/:taskName         controllers.TodoList.addTask(projectId, taskName)
+PUT     /task/:taskId/:state               controllers.TodoList.changeTaskState(taskId, state)
 
 # Javascript routing
 GET     /assets/javascripts/routes         controllers.Application.jsRoutes()
