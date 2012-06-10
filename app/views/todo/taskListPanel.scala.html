@@ -15,8 +15,6 @@
 @{
   val tasks = Task.getTasksByProject(project)
   tasks.map { task =>
-    <div class="well task span8">
-      { task.title }
-    </div>
+    views.html.todo.taskPanel(task)
   }
 }
