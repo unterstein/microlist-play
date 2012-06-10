@@ -46,12 +46,13 @@ function handleCaretPositions() {
 }
 
 $(function() {
-    handleCaretPositions();
+    doAfterAjaxHandling();
 });
 
 function doAfterAjaxHandling() {
     $(function() {
       handleCaretPositions();
+      $('.alert-success').delay(5000).fadeToggle(1500);
     });
 }
 
