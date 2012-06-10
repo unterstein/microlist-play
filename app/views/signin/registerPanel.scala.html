@@ -18,16 +18,19 @@
     @inputText(
         registerForm("email"),
         '_label -> Messages("email"),
+        'placeholer -> Messages("email"),
         '_required -> true
     )
     @inputPassword(
         registerForm("password"),
         '_label -> Messages("password"),
+        'placeholder -> Messages("password"),
         '_required -> true
     )
     @inputPassword(
         registerForm("repassword"),
         '_label -> Messages("repassword"),
+        'placeholder -> Messages("password"),
         '_required -> true
     )
     <button class="btn btn-primary btn-large" onClick="register(this); return false;">@Messages("register")</button>
