@@ -19,6 +19,8 @@ GET     /todo/                             controllers.TodoList.projects()
 POST    /todo/                             controllers.TodoList.addProject()
 DELETE  /todo/:id                          controllers.TodoList.removeProject(id)
 
+POST    /task/:projectId/:taskName         controllers.TodoList.addTask(projectId, taskName)
+
 # Javascript routing
 GET     /assets/javascripts/routes         controllers.Application.jsRoutes()
 

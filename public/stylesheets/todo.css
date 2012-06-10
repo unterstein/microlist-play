@@ -25,8 +25,13 @@ body {
   width: 175px;
 }
 
+input.newTask {
+  width: 800px;
+}
+
 .task {
   background-color: #DDD;
   padding-top: 5px;
   padding-bottom: 5px;
+  margin-left: 0px;
 }

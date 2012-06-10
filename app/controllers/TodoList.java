@@ -3,6 +3,7 @@ package controllers;
 import models.Project;
 import models.Task;
 import models.User;
+import play.Logger;
 import play.data.Form;
 import play.i18n.Messages;
 import play.mvc.Controller;
@@ -11,17 +12,31 @@ import play.mvc.Security;
 import security.Secured;
 import views.html.todo.projectListPanel;
 import views.html.todo.projectPanel;
+import views.html.todo.taskListPanel;
 
 @Security.Authenticated(Secured.class)
 public class TodoList extends Controller {
 
     public static Result todo() {
         User user = MicroSession.getUser();
-        return ok(views.html.todoList.render(Project.getProjectsByUser(user), Project.getDefaultProject(user), new Form<Task>(Task.class)));
+        return ok(views.html.todoList.render(Project.getProjectsByUser(user), Project.getDefaultProject(user)));
     }
 
     public static Result projects() {
         return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser())));
+    }
+
+    public static Result addTask(String projectId, String taskName) {
+        Project project = Project.getProjectById(Long.valueOf(projectId));
+        User userFromSession = MicroSession.getUser();
+        if (project != null && project.user.id == userFromSession.id) {
+            if (taskName != null && !taskName.equals("")) {
+                Task.create(taskName, project);
+            }
+            return ok(taskListPanel.render(project));
+        } else {
+            return badRequest(); // TODO
+        }
     }
 
     public static Result addProject() {

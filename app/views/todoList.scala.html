@@ -1,4 +1,4 @@
-@(projects : List[Project], selectedProject: Project, addTaskForm : Form[Task])
+@(projects : List[Project], selectedProject: Project)
 
 @scripts = {
   <script type="text/javascript" src='@routes.Assets.at("javascripts/list.js")'></script>
@@ -10,8 +10,8 @@
 
 @main(scripts, navigation) {
   <div class="row">
-    <div class="span9">
-      @views.html.todo.taskListPanel(selectedProject, addTaskForm)
+    <div class="span9 taskList">
+      @views.html.todo.taskListPanel(selectedProject)
     </div>
     <div class="span3">
       <h2>@Messages("projects.title")</h2>

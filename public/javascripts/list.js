@@ -52,6 +52,16 @@ function customAfterAjaxHandler() {
         });
         return false;
     });
+    $('.taskList input.newTask').bind('keyup', function(e) {
+        var key = e.keyCode || e.which;
+        if (key === 13) {
+            var projectId = $(this).attr('projectid');
+            var element = $(this).parents('.taskList');
+            ajaxCall(jsRoutes.controllers.TodoList.addTask(projectId, $(this).val()), function(data) {
+                updateElement($(element), data);
+            });
+        }
+    });
 }
 
 $(function() {

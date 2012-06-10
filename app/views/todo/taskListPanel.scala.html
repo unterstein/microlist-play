@@ -1,14 +1,15 @@
-@(project: Project, addTaskForm: Form[Task])
+@(project: Project)
 
 @import helper._
 @import helper.twitterBootstrap._
 
 
 @inputText(
-    addTaskForm("name"),
+    new Form(project.getClass)("title"),
     '_label -> null,
     'placeholder -> Messages("task.new"),
-    'class -> "span8"
+    'class -> "span8 newTask",
+    'projectid -> project.id
 )
 
 @{
