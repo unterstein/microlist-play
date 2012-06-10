@@ -6,6 +6,7 @@ import models.User;
 import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
 import play.mvc.Security;
 import security.Secured;
 import views.html.todo.projectListPanel;
@@ -26,7 +27,7 @@ public class TodoList extends Controller {
         if (project != null && project.user.id == user.id) {
             return ok(views.html.todoList.render(Project.getProjectsByUser(user), project));
         } else {
-            return badRequest();
+            return Results.redirect(routes.TodoList.todoDefault());
         }
     }
 
