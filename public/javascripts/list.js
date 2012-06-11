@@ -38,20 +38,24 @@ function addProject(element) {
 }
 
 function customAfterAjaxHandler() {
+    $('.side.nav .icon-edit').unbind('click');
     $('.side.nav .icon-edit').click(function(event) {
         toggleText($(this), event);
         return false;
     });
+    $('.side.nav input').unbind('keyup');
     $('.side.nav input').bind('keyup', function(e) {
         var key = e.keyCode || e.which;
         if (key === 13) {
             $(document).click();
         }
     });
+    $('.side.nav span').unbind('click');
     $('.side.nav span').click(function(event) {
         toggleText($(this).siblings('.icon-edit'), event);
         return false;
     });
+    $('.side.nav .icon-trash').unbind('click');
     $('.side.nav .icon-trash').click(function(event) {
         var element = $(this).parents('li');
         ajaxCall(jsRoutes.controllers.TodoList.removeProject($(element).attr('id').replace('project_', '')), function(data) {
@@ -59,6 +63,7 @@ function customAfterAjaxHandler() {
         });
         return false;
     });
+    $('.taskList input.newTask').unbind('keyup');
     $('.taskList input.newTask').bind('keyup', function(e) {
         var key = e.keyCode || e.which;
         if (key === 13) {
