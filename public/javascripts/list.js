@@ -66,7 +66,7 @@ function customAfterAjaxHandler() {
         var deletedMyself = $(element).hasClass('active');
         ajaxCall(jsRoutes.controllers.TodoList.removeProject(selectedProject), function(data) {
             if(deletedMyself) {
-                console.log($('.side.nav li:first a'));
+                window.location.href = $('.side.nav li:first a').attr('href');
             }
             replaceElement($(element), '');
         });
