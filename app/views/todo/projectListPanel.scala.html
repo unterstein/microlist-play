@@ -1,13 +1,13 @@
-@(projects : List[Project])
+@(projects : List[Project], currentProject: Project)
 <ul class="side nav nav-tabs nav-stacked">
-  @display(projects, {0})
+  @display(projects, {0}, currentProject)
 </ul>
 
-@display(projects : List[Project], counter : Integer) = {
+@display(projects : List[Project], counter : Integer, currentProject : Project) = {
     @if(projects != null && projects.size() > 0) {
-      @views.html.todo.projectPanel(projects.head, counter == 0)
+      @views.html.todo.projectPanel(projects.head, counter == 0, currentProject)
     }
     @if(projects != null && projects.size() > 1 && projects.tail.size > 0) {
-      @display(projects.tail, counter + 1)
+      @display(projects.tail, counter + 1, currentProject)
     }
 }

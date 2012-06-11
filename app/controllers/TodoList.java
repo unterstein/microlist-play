@@ -57,17 +57,17 @@ public class TodoList extends Controller {
     }
 
     public static Result addProject() {
-        Project.create(Messages.get("project.defaultName"));
-        return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser())));
+        Project project = Project.create(Messages.get("project.defaultName"));
+        return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser()), project));
     }
 
-    public static Result updateProject(String id, String name) {
+    public static Result updateProject(String id, String name, Long selectedProject) {
         Project project = Project.getProjectById(Long.valueOf(id));
         if (project.user.id == MicroSession.getUser().id && project.id != Project.getDefaultProject(project.user).id) {
             project.name = name;
             project.save();
             // default project could not be updated, so we can deliver false here
-            return ok(projectPanel.render(project, false));
+            return ok(projectPanel.render(project, false, Project.getProjectById(selectedProject)));
         } else {
             return badRequest(); // TODO
         }

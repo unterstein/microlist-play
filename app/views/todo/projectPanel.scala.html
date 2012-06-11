@@ -1,5 +1,5 @@
-@(project : Project, defaultList: Boolean)
-<li id="project_@project.id">
+@(project : Project, defaultList: Boolean, currentProject: Project)
+<li id="project_@project.id" @if(project.id == currentProject.id){class="active"}>
   <a href="@routes.TodoList.todo(project.id.toString)">
     <span>@project.name</span>
     <input type="text" style="display:none;" value="@project.name" />

@@ -19,7 +19,7 @@
       <button onClick="addProject($(this).siblings('.projects'))" class="btn btn-primary btn-large">@Messages("project.add")</button>
       <br/><br/>
       <div class="projects">
-        @views.html.todo.projectListPanel(projects)
+        @views.html.todo.projectListPanel(projects, selectedProject)
       </div>
     </div>
   </div>
