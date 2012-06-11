@@ -13,8 +13,11 @@ function toggleText(element, event) {
     } else {
         var id = $(element).parents('li').attr('id').replace('project_', '');
         var name = $(element).siblings("input").val();
-        var selectedProject = $(element).parents('li').siblings('li.active').attr('id').replace('project_', '');
-        updateProject($(element).parents('li'), id, name, selectedProject);
+        var selectedProjectId = $(element).parents('li').siblings('li.active').attr('id');
+        if(selectedProjectId != undefined) {
+            var selectedProject = selectedProjectId.replace('project_', '');
+            updateProject($(element).parents('li'), id, name, selectedProject);
+        }
         $(document).unbind('click');
     }
     doAfterAjaxHandling();
@@ -31,10 +34,10 @@ function updateProject(element, id, name, selectedProject) {
 }
 
 function addProject(element) {
-    ajaxCall(jsRoutes.controllers.TodoList.addProject(), function(data) {
+    ajaxCall(jsRoutes.controllers.TodoList.addProject($(element).find('li.active').attr('id').replace('project_', '')), function(data) {
         updateElement(element, data);
         customAfterAjaxHandler();
-        $('.side.nav .icon-edit:last').click();
+        $('.side.nav li:last .icon-edit').click();
     });
 }
 
@@ -59,7 +62,12 @@ function customAfterAjaxHandler() {
     $('.side.nav .icon-trash').unbind('click');
     $('.side.nav .icon-trash').click(function(event) {
         var element = $(this).parents('li');
-        ajaxCall(jsRoutes.controllers.TodoList.removeProject($(element).attr('id').replace('project_', '')), function(data) {
+        var selectedProject = $(element).attr('id').replace('project_', '');
+        var deletedMyself = $(element).hasClass('active');
+        ajaxCall(jsRoutes.controllers.TodoList.removeProject(selectedProject), function(data) {
+            if(deletedMyself) {
+                console.log($('.side.nav li:first a'));
+            }
             replaceElement($(element), '');
         });
         return false;

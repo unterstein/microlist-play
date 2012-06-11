@@ -16,7 +16,7 @@ GET     /registerpanel                     controllers.Authentication.registerPa
 
 # Todo
 PUT     /todo/:id/:name/:selectedProject   controllers.TodoList.updateProject(id : Long, name, selectedProject : Long)
-POST    /todo/                             controllers.TodoList.addProject()
+POST    /todo/:lastActiveProject           controllers.TodoList.addProject(lastActiveProject : Long)
 DELETE  /todo/:id                          controllers.TodoList.removeProject(id : Long)
 POST    /task/:projectId/:taskName         controllers.TodoList.addTask(projectId : Long, taskName)
 PUT     /task/:taskId/:state               controllers.TodoList.changeTaskState(taskId : Long, state)

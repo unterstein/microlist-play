@@ -56,9 +56,9 @@ public class TodoList extends Controller {
         }
     }
 
-    public static Result addProject() {
-        Project project = Project.create(Messages.get("project.defaultName"));
-        return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser()), project));
+    public static Result addProject(Long lastActiveProject) {
+        Project.create(Messages.get("project.defaultName"));
+        return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser()), Project.getProjectById(lastActiveProject)));
     }
 
     public static Result updateProject(Long id, String name, Long selectedProject) {
