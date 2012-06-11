@@ -3,6 +3,7 @@ page.title=Microlist - manage yourself
 email=E-Mail
 password=Password
 repassword=Retype password
+password.required=Password is needed
 remember=Remember
 login=Login
 logout=Logout

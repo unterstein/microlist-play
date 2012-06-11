@@ -85,8 +85,7 @@ public class Authentication extends Controller {
     public static class Register {
 
         @Formats.NonEmpty
-        // TODO i18n
-        @Required(message = "Password is needed")
+        @Required(message = "password.required")
         @MaxLength(value = 10)
         @MinLength(value = 5)
         public String password;
