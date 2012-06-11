@@ -32,12 +32,13 @@ public class User extends Model {
      * @param email
      * @param password
      */
-    public static void create(final String email, final String password) {
+    public static User create(final String email, final String password) {
         User user = new User();
         user.email = email;
         user.password = password;
-        Project.create(Messages.get("project.inboxName"), user);
         user.save();
+        Project.create(Messages.get("project.inboxName"), user);
+        return user;
     }
 
     public static User authenticate(final String email, final String password) {

@@ -50,7 +50,7 @@ public class Authentication extends Controller {
             return ok(registerPanel.render(registerForm));
         } else {
             setUserToSession(registerForm.get().email);
-            return ok("" + routes.TodoList.todoDefault());
+            return ok("" + routes.TodoList.todoDefault()); // just return route
         }
     }
 

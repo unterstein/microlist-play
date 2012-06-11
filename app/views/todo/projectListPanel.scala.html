@@ -4,8 +4,10 @@
 </ul>
 
 @display(projects : List[Project], counter : Integer) = {
-    @views.html.todo.projectPanel(projects.head, counter == 0)
-    @if(projects.tail.size > 0) {
+    @if(projects != null && projects.size() > 0) {
+      @views.html.todo.projectPanel(projects.head, counter == 0)
+    }
+    @if(projects != null && projects.size() > 1 && projects.tail.size > 0) {
       @display(projects.tail, counter + 1)
     }
 }
