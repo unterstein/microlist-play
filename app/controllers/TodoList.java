@@ -21,9 +21,9 @@ public class TodoList extends Controller {
         return ok(views.html.todoList.render(Project.getProjectsByUser(user), Project.getDefaultProject(user)));
     }
 
-    public static Result todo(String projectId) {
+    public static Result todo(Long projectId) {
         User user = MicroSession.getUser();
-        Project project = Project.getProjectById(Long.valueOf(projectId));
+        Project project = Project.getProjectById(projectId);
         if (project != null && project.user.id == user.id) {
             return ok(views.html.todoList.render(Project.getProjectsByUser(user), project));
         } else {
@@ -31,8 +31,8 @@ public class TodoList extends Controller {
         }
     }
 
-    public static Result changeTaskState(String taskId, String state) {
-        Task task = Task.getTasksById(Long.valueOf(taskId));
+    public static Result changeTaskState(Long taskId, String state) {
+        Task task = Task.getTasksById(taskId);
         User user = MicroSession.getUser();
         if (task != null && task.project.user.id == user.id) {
             task.finished = "true".equals(state) ? true : false;
@@ -43,8 +43,8 @@ public class TodoList extends Controller {
         }
     }
 
-    public static Result addTask(String projectId, String taskName) {
-        Project project = Project.getProjectById(Long.valueOf(projectId));
+    public static Result addTask(Long projectId, String taskName) {
+        Project project = Project.getProjectById(projectId);
         User userFromSession = MicroSession.getUser();
         if (project != null && project.user.id == userFromSession.id) {
             if (taskName != null && !taskName.equals("")) {
@@ -61,8 +61,8 @@ public class TodoList extends Controller {
         return ok(projectListPanel.render(Project.getProjectsByUser(MicroSession.getUser()), project));
     }
 
-    public static Result updateProject(String id, String name, Long selectedProject) {
-        Project project = Project.getProjectById(Long.valueOf(id));
+    public static Result updateProject(Long id, String name, Long selectedProject) {
+        Project project = Project.getProjectById(id);
         if (project.user.id == MicroSession.getUser().id && project.id != Project.getDefaultProject(project.user).id) {
             project.name = name;
             project.save();
@@ -73,8 +73,8 @@ public class TodoList extends Controller {
         }
     }
 
-    public static Result removeProject(String id) {
-        Project project = Project.getProjectById(Long.valueOf(id));
+    public static Result removeProject(Long id) {
+        Project project = Project.getProjectById(id);
         if (project.user.id == MicroSession.getUser().id) {
             Project.remove(project);
             return ok();
