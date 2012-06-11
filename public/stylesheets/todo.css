@@ -24,6 +24,10 @@ body {
 .side.nav input {
   width: 175px;
 }
+.side.nav .icon-trash,
+.side.nav .icon-edit {
+  float: right;
+}
 
 input.newTask {
   width: 800px;
