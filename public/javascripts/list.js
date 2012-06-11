@@ -66,6 +66,7 @@ function customAfterAjaxHandler() {
             var element = $(this).parents('.taskList');
             ajaxCall(jsRoutes.controllers.TodoList.addTask(projectId, $(this).val()), function(data) {
                 updateElement($(element), data);
+                customAfterAjaxHandler();
             });
         }
     });
