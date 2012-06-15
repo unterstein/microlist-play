@@ -78,6 +78,10 @@ input.newTask {
   margin-left: -5px;
 }
 
+.footer p {
+  margin: 5px 10px;
+}
+
 /**
  * checkboxes
  */

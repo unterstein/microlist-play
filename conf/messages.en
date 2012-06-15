@@ -26,3 +26,5 @@ time.format=dd.MM.yyyy
 #time.format.jquery=dd.mm.yy
 task.description.title=Edit your description
 task.description=Description
+back.top=Back to top
+footer.left=developed and built with all the love in the world by Johannes Unterstein, the play! framework and bootstrap
