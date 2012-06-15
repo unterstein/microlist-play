@@ -99,4 +99,8 @@ public class Tasks extends Controller {
         }
     }
 
+    public static class Description {
+        public String description;
+    }
+
 }
