@@ -78,7 +78,7 @@ function customAfterAjaxHandler() {
         if (key === 13) {
             var projectId = $(this).attr('projectid');
             var element = $(this).parents('.taskList');
-            ajaxCall(jsRoutes.controllers.TodoList.addTask(projectId, $(this).val()), function(data) {
+            ajaxCall(jsRoutes.controllers.Tasks.addTask(projectId, $(this).val()), function(data) {
                 updateElement($(element), data);
                 customAfterAjaxHandler();
             });
@@ -86,12 +86,12 @@ function customAfterAjaxHandler() {
     });
     $('.task .taskbox').unbind('change');
     $('.task .taskbox').change(function(event) {
-        ajaxCall(jsRoutes.controllers.TodoList.changeTaskState($(this).data("task"), $(this).is(':checked')));
+        ajaxCall(jsRoutes.controllers.Tasks.changeTaskState($(this).data("task"), $(this).is(':checked')));
     });
     $('.task .icon-trash').unbind('click');
     $('.task .icon-trash').click(function(event) {
         var element = $(this).parents('.task');
-        var selectedTask = $(element).attr('id').replace('task_', '');
+        var selectedTask = $(element).attr('id').replace('taskid_', '');
         ajaxCall(jsRoutes.controllers.Tasks.removeTask(selectedTask), function(data) {
             replaceElement($(element), '');
         });

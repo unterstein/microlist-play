@@ -1,7 +1,6 @@
 package controllers;
 
 import models.Project;
-import models.Task;
 import models.User;
 import play.i18n.Messages;
 import play.mvc.Controller;
@@ -11,7 +10,6 @@ import play.mvc.Security;
 import security.Secured;
 import views.html.todo.projectListPanel;
 import views.html.todo.projectPanel;
-import views.html.todo.taskListPanel;
 
 @Security.Authenticated(Secured.class)
 public class TodoList extends Controller {
@@ -28,31 +26,6 @@ public class TodoList extends Controller {
             return ok(views.html.todoList.render(Project.getProjectsByUser(user), project));
         } else {
             return Results.redirect(routes.TodoList.todoDefault());
-        }
-    }
-
-    public static Result changeTaskState(Long taskId, String state) {
-        Task task = Task.getTasksById(taskId);
-        User user = MicroSession.getUser();
-        if (task != null && task.project.user.id == user.id) {
-            task.finished = "true".equals(state) ? true : false;
-            task.save();
-            return ok();
-        } else {
-            return badRequest();
-        }
-    }
-
-    public static Result addTask(Long projectId, String taskName) {
-        Project project = Project.getProjectById(projectId);
-        User userFromSession = MicroSession.getUser();
-        if (project != null && project.user.id == userFromSession.id) {
-            if (taskName != null && !taskName.equals("")) {
-                Task.create(taskName, project);
-            }
-            return ok(taskListPanel.render(project));
-        } else {
-            return badRequest(); // TODO
         }
     }
 
