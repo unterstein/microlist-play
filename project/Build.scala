@@ -10,7 +10,8 @@ object ApplicationBuild extends Build {
     val appDependencies = Seq(
       "mysql" % "mysql-connector-java" % "5.1.20",
       "com.github.twitter" % "bootstrap" % "2.0.3",
-      "com.jquery" % "jquery" % "1.7.1",
+      "com.jquery" % "jquery" % "1.7.2",
+      "com.jqueryui" % "jquery.ui" % "1.8.20",
       "com.github.play2war" %% "play2-war-core" % "0.4"
     )
 
