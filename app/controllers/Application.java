@@ -28,7 +28,8 @@ public class Application extends Controller {
                 controllers.routes.javascript.Tasks.addTask(),
                 controllers.routes.javascript.Tasks.changeTaskState(),
                 controllers.routes.javascript.Tasks.removeTask(),
-                controllers.routes.javascript.Tasks.updateTask()
+                controllers.routes.javascript.Tasks.updateTask(),
+                controllers.routes.javascript.Tasks.updateTaskName()
                 ));
     }
 }

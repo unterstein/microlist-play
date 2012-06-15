@@ -23,7 +23,8 @@ DELETE  /todo/:id                          controllers.TodoList.removeProject(id
 POST    /task/:taskId/:taskName            controllers.Tasks.addTask(taskId : Long, taskName)
 PUT     /task/state/:taskId/:state         controllers.Tasks.changeTaskState(taskId : Long, state)
 DELETE  /task/:id                          controllers.Tasks.removeTask(id : Long)
-PUT     /task/:taskId/:name                controllers.Tasks.updateTask(taskId : Long, name)
+PUT     /task/:taskId                      controllers.Tasks.updateTask(taskId : Long)
+PUT     /task/:taskId/:name                controllers.Tasks.updateTaskName(taskId : Long, name)
 
 # Javascript routing
 GET     /assets/javascripts/routes         controllers.Application.jsRoutes()

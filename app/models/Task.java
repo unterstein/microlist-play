@@ -81,4 +81,22 @@ public class Task extends Model {
     public static void save(Task task) {
         task.save();
     }
+
+    /**
+     * Updates the {@link Task} from database
+     * 
+     * @param taskId
+     * @param task
+     */
+    public static void updateUser(Long taskId, Task task) {
+        Task taskFromDb = getTasksById(taskId);
+
+        taskFromDb.description = task.description;
+        taskFromDb.dueDate = task.dueDate;
+        taskFromDb.finished = task.finished;
+        taskFromDb.project = task.project;
+        taskFromDb.title = task.title;
+
+        taskFromDb.save();
+    }
 }

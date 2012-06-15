@@ -42,7 +42,7 @@ function toggleTask(element, event) {
         var selectedTask = $(element).parents('.task').attr('id').replace('taskid_', '');
         var name = $(element).siblings("input").val();
         if(selectedTask != undefined) {
-            updateTask($(element).parents('.task'), selectedTask, name);
+            updateTaskName($(element).parents('.task'), selectedTask, name);
         }
         $(document).unbind('click');
     }
@@ -52,11 +52,18 @@ function toggleTask(element, event) {
     }
 }
 
-function updateTask(element, id, name) {
-    ajaxCall(jsRoutes.controllers.Tasks.updateTask(id, name), function(data) {
+function updateTaskName(element, id, name) {
+    ajaxCall(jsRoutes.controllers.Tasks.updateTaskName(id, name), function(data) {
         replaceElement(element, data);
         customAfterAjaxHandler();
     });
+}
+
+function updateTask(element, id, task) {
+    ajaxCall(jsRoutes.controllers.Tasks.updateTask(id), function(data) {
+        replaceElement(element, data);
+        customAfterAjaxHandler();
+    }, function(data) {}, task);
 }
 
 function updateProject(element, id, name, selectedProject) {
