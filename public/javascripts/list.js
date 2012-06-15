@@ -146,7 +146,7 @@ function customAfterAjaxHandler() {
     });
     $('.task .taskbox').unbind('change');
     $('.task .taskbox').change(function(event) {
-        ajaxCall(jsRoutes.controllers.Tasks.changeTaskState($(this).data("task"), $(this).is(':checked')));
+        ajaxCall(jsRoutes.controllers.Tasks.updateTaskState($(this).data("task"), $(this).is(':checked')));
     });
     $('.task .icon-trash').unbind('click');
     $('.task .icon-trash').click(function(event) {
