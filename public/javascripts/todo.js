@@ -43,6 +43,7 @@
 
 function handleCaretPositions() {
     $(".nav input:visible").selectAll();
+    $(".task input:visible").selectAll();
 }
 
 $(function() {

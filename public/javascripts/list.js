@@ -135,6 +135,13 @@ function customAfterAjaxHandler() {
         toggleTask($(this), event);
         return false;
     });
+    $('.task input').unbind('keyup');
+    $('.task input').bind('keyup', function(e) {
+        var key = e.keyCode || e.which;
+        if (key === 13) {
+            $(document).click();
+        }
+    });
 }
 
 $(function() {
