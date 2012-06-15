@@ -16,7 +16,7 @@
   @* checkboxes *@
   <div class="control-group @if(elements.hasErrors) {error}">
     <label class="control-label" for="@elements.id">@elements.label@if(elements.args.get('_required).toString().equals("Some(true)")) {*}:</label>
-    <div class="controls" style="position: relative; color: #8b8f97; line-height: 21px; font-size: 12px;">
+    <div class="controls checkboxParent">
           <input type="checkbox" @if("Some(true)".equals(elements.args.get('_checked).toString())) {checked} id="@elements.id" />
           <label class="checkbox toggle" for="@elements.id"></label>
           <span class="help-inline">@elements.errors.mkString(", ")</span> 

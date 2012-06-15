@@ -48,6 +48,15 @@ input.newTask {
 /**
  * checkboxes
  */
+.checkboxParent {
+  position: relative;
+}
+
+.checkboxParent > span {
+  padding-left: 30px;
+  line-height: 26px;
+}
+
 input[type=checkbox] {
     display: none;
 }
