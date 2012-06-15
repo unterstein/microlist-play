@@ -128,6 +128,7 @@ function customAfterAjaxHandler() {
             ajaxCall(jsRoutes.controllers.Tasks.addTask(projectId, $(this).val()), function(data) {
                 updateElement($(element), data);
                 customAfterAjaxHandler();
+                $('.taskList input.newTask').selectAll();
             });
         }
     });
@@ -161,8 +162,8 @@ function customAfterAjaxHandler() {
         $(this).siblings('.icon-edit').click();
         return false;
     });
-    $('.task .icon-time').unbind('click');
-    $('.task .icon-time').click(function(event) {
+    $('.task .icon.time').unbind('click');
+    $('.task .icon.time').click(function(event) {
         $($(this).siblings('input[name="dueDate"]')).datepicker("show");
         return false;
     });

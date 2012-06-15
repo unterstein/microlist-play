@@ -12,7 +12,7 @@
     <input type="text" name="dueDate" style="display:none;" value="@task.niceDueDate" id="due_@task.id"/>
     <i class="icon icon-trash"></i>
     <i class="icon icon-edit"></i>
-    <i class="icon icon-time"></i>
     <i class="icon icon-comment"></i>
+    @if(task.dueDate != null) { <span class="icon time">@task.niceDueDate</span> } else { <i class="icon icon-time time"></i> }
   </span>
 </div>
