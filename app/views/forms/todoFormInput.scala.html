@@ -8,18 +8,20 @@
   <div class="control-group @if(elements.hasErrors) {error}">
     <label class="control-label" for="@elements.id">@elements.label@if(elements.args.get('_required).toString().equals("Some(true)")) {*}:</label>
     <div class="controls">
-          @elements.input
-          <span class="help-inline">@elements.errors.mkString(", ")</span> 
+      @elements.input
+      <span class="help-inline">@elements.errors.mkString(", ")</span> 
     </div>
   </div>
 } else {
   @* checkboxes *@
   <div class="control-group @if(elements.hasErrors) {error}">
     <label class="control-label" for="@elements.id">@elements.label@if(elements.args.get('_required).toString().equals("Some(true)")) {*}:</label>
-    <div class="controls checkboxParent">
-          <input type="checkbox" @if("Some(true)".equals(elements.args.get('_checked).toString())) {checked} id="@elements.id" />
-          <label class="checkbox toggle" for="@elements.id"></label>
-          <span class="help-inline">@elements.errors.mkString(", ")</span> 
+    <div class="controls">
+      <div class="checkboxParent">
+        <input type="checkbox" @if("Some(true)".equals(elements.args.get('_checked).toString())) {checked} id="@elements.id" />
+        <label class="checkbox toggle" for="@elements.id"></label>
+      </div>
+      <span class="help-inline">@elements.errors.mkString(", ")</span> 
     </div>
   </div>
 }
