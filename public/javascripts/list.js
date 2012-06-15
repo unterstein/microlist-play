@@ -59,6 +59,13 @@ function updateTaskName(element, id, name) {
     });
 }
 
+function updateTaskDueDate(element, id, date) {
+    ajaxCall(jsRoutes.controllers.Tasks.updateTaskDueDate(id, date), function(data) {
+        replaceElement(element, data);
+        customAfterAjaxHandler();
+    });
+}
+
 function updateTask(element, id, task) {
     ajaxCall(jsRoutes.controllers.Tasks.updateTask(id), function(data) {
         replaceElement(element, data);
@@ -162,11 +169,13 @@ function customAfterAjaxHandler() {
     $('.task input[name="dueDate"]').datepicker({
         changeMonth : false,
         changeYear : false,
-        dateFormat: "dd.mm.yy"
+        dateFormat: "dd.mm.yy" // @Messages("time.format.jquery") TODO i18n
     });
     $('.task input[name="dueDate"]').unbind("change");
     $('.task input[name="dueDate"]').change(function() {
-        alert($(this).val());
+        var element = $(this).parents('.task');
+        var selectedTask = $(element).attr('id').replace('taskid_', '');
+        updateTaskDueDate(element, selectedTask, $(this).val())
     });
 }
 

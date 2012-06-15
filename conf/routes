@@ -15,16 +15,17 @@ POST    /register                          controllers.Authentication.registerUs
 GET     /registerpanel                     controllers.Authentication.registerPanel()
 
 # Todo
-PUT     /todo/:id/:name/:selectedProject   controllers.TodoList.updateProject(id : Long, name, selectedProject : Long)
+PUT     /todo/:id/:name/:selectedProject   controllers.TodoList.updateProject(id : Long, name : String, selectedProject : Long)
 POST    /todo/:lastActiveProject           controllers.TodoList.addProject(lastActiveProject : Long)
 DELETE  /todo/:id                          controllers.TodoList.removeProject(id : Long)
 
 # Tasks
-POST    /task/:taskId/:taskName            controllers.Tasks.addTask(taskId : Long, taskName)
-PUT     /task/state/:taskId/:state         controllers.Tasks.changeTaskState(taskId : Long, state)
+POST    /task/:taskId/:taskName            controllers.Tasks.addTask(taskId : Long, taskName : String)
 DELETE  /task/:id                          controllers.Tasks.removeTask(id : Long)
 PUT     /task/:taskId                      controllers.Tasks.updateTask(taskId : Long)
-PUT     /task/:taskId/:name                controllers.Tasks.updateTaskName(taskId : Long, name)
+PUT     /task/:taskId/state/:state         controllers.Tasks.updateTaskState(taskId : Long, state : String)
+PUT     /task/:taskId/name/:name           controllers.Tasks.updateTaskName(taskId : Long, name : String)
+PUT     /task/:taskId/date/:dueDate        controllers.Tasks.updateTaskDueDate(taskId : Long, dueDate : String)
 
 # Javascript routing
 GET     /assets/javascripts/routes         controllers.Application.jsRoutes()

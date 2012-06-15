@@ -26,10 +26,11 @@ public class Application extends Controller {
                 controllers.routes.javascript.TodoList.updateProject(),
                 controllers.routes.javascript.TodoList.removeProject(),
                 controllers.routes.javascript.Tasks.addTask(),
-                controllers.routes.javascript.Tasks.changeTaskState(),
                 controllers.routes.javascript.Tasks.removeTask(),
                 controllers.routes.javascript.Tasks.updateTask(),
-                controllers.routes.javascript.Tasks.updateTaskName()
+                controllers.routes.javascript.Tasks.updateTaskName(),
+                controllers.routes.javascript.Tasks.updateTaskState(),
+                controllers.routes.javascript.Tasks.updateTaskDueDate()
                 ));
     }
 }

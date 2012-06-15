@@ -7,10 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 import play.data.format.Formats;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
+import play.i18n.Messages;
 
 @Entity
 public class Task extends Model {
@@ -28,6 +30,10 @@ public class Task extends Model {
     @OneToOne
     @Required
     public Project project;
+
+    public String niceDueDate() {
+        return DateTimeFormat.forPattern(Messages.get("time.format")).print(this.dueDate);
+    }
 
     private static Model.Finder<Long, Task> find = new Model.Finder<Long, Task>(Long.class, Task.class);
 

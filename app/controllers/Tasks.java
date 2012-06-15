@@ -3,7 +3,12 @@ package controllers;
 import models.Project;
 import models.Task;
 import models.User;
+
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+
 import play.data.Form;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
@@ -25,19 +30,6 @@ public class Tasks extends Controller {
         }
     }
 
-    public static Result changeTaskState(Long taskId, String state) {
-        Task task = Task.getTasksById(taskId);
-        User user = MicroSession.getUser();
-        Project project = Project.getProjectById(task.project.id);
-        if (task != null && project.user.id == user.id) {
-            task.finished = "true".equals(state) ? true : false;
-            Task.save(task);
-            return ok();
-        } else {
-            return badRequest();
-        }
-    }
-
     public static Result addTask(Long projectId, String taskName) {
         Project project = Project.getProjectById(projectId);
         User userFromSession = MicroSession.getUser();
@@ -51,12 +43,42 @@ public class Tasks extends Controller {
         }
     }
 
-    public static Result updateTaskName(Long taskId, String title) {
-        User user = MicroSession.getUser();
+    private static Task checkAndGetTask(Long taskId) {
         Task task = Task.getTasksById(taskId);
+        User user = MicroSession.getUser();
         Project project = Project.getProjectById(task.project.id);
         if (task != null && project.user.id == user.id) {
+            return task;
+        }
+        return null;
+    }
+
+    public static Result updateTaskState(Long taskId, String state) {
+        Task task = checkAndGetTask(taskId);
+        if (task != null) {
+            task.finished = "true".equals(state) ? true : false;
+            Task.save(task);
+            return ok();
+        } else {
+            return badRequest();
+        }
+    }
+
+    public static Result updateTaskName(Long taskId, String title) {
+        Task task = checkAndGetTask(taskId);
+        if (task != null) {
             task.title = title;
+            Task.save(task);
+            return ok(taskPanel.render(task));
+        } else {
+            return badRequest();
+        }
+    }
+
+    public static Result updateTaskDueDate(Long taskId, String dueDate) {
+        Task task = checkAndGetTask(taskId);
+        if (task != null) {
+            task.dueDate = DateTime.parse(dueDate, DateTimeFormat.forPattern(Messages.get("time.format")));
             Task.save(task);
             return ok(taskPanel.render(task));
         } else {
