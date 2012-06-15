@@ -40,7 +40,6 @@ public class Authentication extends Controller {
     }
 
     private static void setUserToSession(String email) {
-        Controller.flash("success", Messages.get("welcome") + " " + email);
         Controller.session(Secured.AUTH_SESSION, "" + email);
     }
 
@@ -49,7 +48,9 @@ public class Authentication extends Controller {
         if (registerForm.hasErrors()) {
             return ok(registerPanel.render(registerForm));
         } else {
-            setUserToSession(registerForm.get().email);
+            String email = registerForm.get().email;
+            Controller.flash("success", Messages.get("welcome") + " " + email);
+            setUserToSession(email);
             return ok("" + routes.TodoList.todoDefault()); // just return route
         }
     }
