@@ -26,6 +26,31 @@ function toggleProject(element, event) {
     }
 }
 
+function toggleTask(element, event) {
+    $(element).siblings("span").toggle();
+    $(element).siblings("input").toggle();
+    if($(element).siblings("input").is(":visible")) {
+        $(document).click(function(event) { 
+            var selector = $(element).siblings("input");
+            if($(selector)[0] != $(event.target)[0] && $(event.target).parents().index($(selector)) == -1) {
+                if($(selector).is(":visible")) {
+                    toggleTask(element);
+                }
+            }
+        })
+    } else {
+        var selectedTask = $(element).parents('.task').attr('id').replace('taskid_', '');
+        if(selectedTask != undefined) {
+            // TODO updateTask
+        }
+        $(document).unbind('click');
+    }
+    doAfterAjaxHandling();
+    if(event != undefined) {
+        event.preventDefault();
+    }
+}
+
 function updateProject(element, id, name, selectedProject) {
     ajaxCall(jsRoutes.controllers.TodoList.updateProject(id, name, selectedProject), function(data) {
         replaceElement(element, data);
@@ -95,6 +120,11 @@ function customAfterAjaxHandler() {
         ajaxCall(jsRoutes.controllers.Tasks.removeTask(selectedTask), function(data) {
             replaceElement($(element), '');
         });
+        return false;
+    });
+    $('.task .icon-edit').unbind('click');
+    $('.task .icon-edit').click(function(event) {
+        toggleTask($(this), event);
         return false;
     });
 }
