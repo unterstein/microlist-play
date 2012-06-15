@@ -2,9 +2,12 @@
  * Micromata
  */
 body {
+  background: url(../images/bg.jpg) top center no-repeat;
+}
+
+body > .container {
   padding-top: 60px;
   padding-bottom: 40px;
-  background: url(../images/bg.jpg) top center no-repeat;
 }
 
 .alert {
@@ -30,6 +33,10 @@ body {
 .task .icon-edit {
   float: right;
   width: 1.25em;
+  cursor: pointer;
+}
+
+.taskTitle {
   cursor: pointer;
 }
 
