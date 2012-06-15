@@ -37,6 +37,10 @@ body > .container {
 .taskTitle {
   cursor: pointer;
 }
+.task input[name='title'] {
+  padding: 3px;
+  margin-bottom: 0px;
+}
 
 input.newTask {
   width: 100%;
