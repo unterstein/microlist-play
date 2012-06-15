@@ -83,13 +83,4 @@ public class TodoList extends Controller {
         }
     }
 
-    public static Result removeTask(Long id) {
-        Task task = Task.getTasksById(id);
-        if (task.project.user.id == MicroSession.getUser().id) {
-            Task.remove(task);
-            return ok();
-        } else {
-            return badRequest(); // TODO
-        }
-    }
 }

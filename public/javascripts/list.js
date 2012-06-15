@@ -90,13 +90,9 @@ function customAfterAjaxHandler() {
     });
     $('.task .icon-trash').unbind('click');
     $('.task .icon-trash').click(function(event) {
-        var element = $(this).parents('li');
-        var selectedProject = $(element).attr('id').replace('project_', '');
-        var deletedMyself = $(element).hasClass('active');
-        ajaxCall(jsRoutes.controllers.TodoList.removeProject(selectedProject), function(data) {
-            if(deletedMyself) {
-                window.location.href = $('.side.nav li:first a').attr('href');
-            }
+        var element = $(this).parents('.task');
+        var selectedTask = $(element).attr('id').replace('task_', '');
+        ajaxCall(jsRoutes.controllers.Tasks.removeTask(selectedTask), function(data) {
             replaceElement($(element), '');
         });
         return false;

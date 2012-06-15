@@ -21,6 +21,9 @@ DELETE  /todo/:id                          controllers.TodoList.removeProject(id
 POST    /task/:projectId/:taskName         controllers.TodoList.addTask(projectId : Long, taskName)
 PUT     /task/:taskId/:state               controllers.TodoList.changeTaskState(taskId : Long, state)
 
+# Tasks
+DELETE  /task/:id                          controllers.Tasks.removeTask(id : Long)
+
 # Javascript routing
 GET     /assets/javascripts/routes         controllers.Application.jsRoutes()
 
