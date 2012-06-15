@@ -28,10 +28,10 @@ function toggleProject(element, event) {
 
 function toggleTask(element, event) {
     $(element).siblings("span").toggle();
-    $(element).siblings("input").toggle();
-    if($(element).siblings("input").is(":visible")) {
+    $(element).siblings("input[name='title']").toggle();
+    if($(element).siblings("input[name='title']").is(":visible")) {
         $(document).click(function(event) { 
-            var selector = $(element).siblings("input");
+            var selector = $(element).siblings("input[name='title']");
             if($(selector)[0] != $(event.target)[0] && $(event.target).parents().index($(selector)) == -1) {
                 if($(selector).is(":visible")) {
                     toggleTask(element);
@@ -40,7 +40,7 @@ function toggleTask(element, event) {
         })
     } else {
         var selectedTask = $(element).parents('.task').attr('id').replace('taskid_', '');
-        var name = $(element).siblings("input").val();
+        var name = $(element).siblings("input[name='title']").val();
         if(selectedTask != undefined) {
             updateTaskName($(element).parents('.task'), selectedTask, name);
         }
