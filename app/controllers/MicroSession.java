@@ -12,4 +12,8 @@ public class MicroSession implements Serializable {
     public static User getUser() {
         return User.getUserByEMail(Controller.session(Secured.AUTH_SESSION));
     }
+
+    public static boolean isLoggedIn() {
+        return getUser() != null;
+    }
 }
