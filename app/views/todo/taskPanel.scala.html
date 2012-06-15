@@ -12,7 +12,22 @@
     <input type="text" name="dueDate" style="display:none;" value="@task.niceDueDate" id="due_@task.id"/>
     <i class="icon icon-trash"></i>
     <i class="icon icon-edit"></i>
-    <i class="icon icon-comment"></i>
+    <a data-toggle="modal" href="#modalTask_@task.id" class="comment @if(task.description == null || task.description.length == 0) { inactive }"><i class="icon icon-comment"></i></a>
     @if(task.dueDate != null) { <span class="icon time">@task.niceDueDate</span> } else { <i class="icon icon-time time"></i> }
   </span>
+
+  <!-- comment modal dialog -->
+  <div class="modal fade" id="modalTask_@task.id" style="display: none;">
+    <div class="modal-header">
+    <button class="close" data-dismiss="modal">×</button>
+    <h3>Modal header</h3>
+    </div>
+    <div class="modal-body">
+    <p>One fine body ... </p>
+    </div>
+    <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+    </div>
+  </div>
 </div>

@@ -37,9 +37,21 @@ body > .container {
 .taskTitle {
   cursor: pointer;
 }
+
 .task input[name='title'] {
   padding: 3px;
   margin-bottom: 0px;
+}
+
+.task a.comment.inactive {
+  color: #333;
+}
+
+.task a.comment:hover {
+  text-decoration: none;
+}
+.task i {
+/*   color: #08C; */
 }
 
 input.newTask {
