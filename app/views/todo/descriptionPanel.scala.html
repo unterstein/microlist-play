@@ -1,0 +1,9 @@
+@(task : Task, descriptionForm : Form[Tasks.Description])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+
+@helper.form(routes.Authentication.loginUser,'class -> "form-horizontal") {
+  <textarea name="description" initial="@task.description">@task.description</textarea>
+}

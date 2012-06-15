@@ -178,10 +178,19 @@ function customAfterAjaxHandler() {
         var selectedTask = $(element).attr('id').replace('taskid_', '');
         updateTaskDueDate(element, selectedTask, $(this).val())
     });
-    $('.task .btn.reset').click(function() {
-        var textArea = $(this).parent().siblings('.modal-body').find('textarea');
-        $(textArea).val($(textArea).attr('initial'));
+    $('.task .btn.reset, .task button.reset').unbind('click');
+    $('.task .btn.reset, .task button.reset').click(function() {
+        clearModal($(this).parent('.modal.fade'));
     });
+    $('.modal.fade').unbind('hide');
+    $('.modal.fade').on('hide', function() {
+        clearModal(this);
+    });
+}
+
+function clearModal(element) {
+    var textArea = $(element).find('.modal-body').find('textarea');
+    $(textArea).val($(textArea).attr('initial'));
 }
 
 $(function() {
