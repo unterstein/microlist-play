@@ -40,8 +40,9 @@ function toggleTask(element, event) {
         })
     } else {
         var selectedTask = $(element).parents('.task').attr('id').replace('taskid_', '');
+        var name = $(element).siblings("input").val();
         if(selectedTask != undefined) {
-            // TODO updateTask
+            updateTask($(element).parents('.task'), selectedTask, name);
         }
         $(document).unbind('click');
     }
@@ -49,6 +50,13 @@ function toggleTask(element, event) {
     if(event != undefined) {
         event.preventDefault();
     }
+}
+
+function updateTask(element, id, name) {
+    ajaxCall(jsRoutes.controllers.Tasks.updateTask(id, name), function(data) {
+        replaceElement(element, data);
+        customAfterAjaxHandler();
+    });
 }
 
 function updateProject(element, id, name, selectedProject) {

@@ -8,6 +8,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 import security.Secured;
 import views.html.todo.taskListPanel;
+import views.html.todo.taskPanel;
 
 @Security.Authenticated(Secured.class)
 public class Tasks extends Controller {
@@ -22,14 +23,14 @@ public class Tasks extends Controller {
             return badRequest(); // TODO
         }
     }
-    
 
     public static Result changeTaskState(Long taskId, String state) {
         Task task = Task.getTasksById(taskId);
         User user = MicroSession.getUser();
-        if (task != null && task.project.user.id == user.id) {
+        Project project = Project.getProjectById(task.project.id);
+        if (task != null && project.user.id == user.id) {
             task.finished = "true".equals(state) ? true : false;
-            task.save();
+            Task.save(task);
             return ok();
         } else {
             return badRequest();
@@ -46,6 +47,19 @@ public class Tasks extends Controller {
             return ok(taskListPanel.render(project));
         } else {
             return badRequest(); // TODO
+        }
+    }
+
+    public static Result updateTask(Long taskId, String title) {
+        User user = MicroSession.getUser();
+        Task task = Task.getTasksById(taskId);
+        Project project = Project.getProjectById(task.project.id);
+        if (task != null && project.user.id == user.id) {
+            task.title = title;
+            Task.save(task);
+            return ok(taskPanel.render(task));
+        } else {
+            return badRequest();
         }
     }
 

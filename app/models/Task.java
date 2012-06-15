@@ -72,4 +72,13 @@ public class Task extends Model {
     public static void remove(Task task) {
         task.delete();
     }
+
+    /**
+     * Saves or updates the {@link Task} to the database
+     * 
+     * @param task
+     */
+    public static void save(Task task) {
+        task.save();
+    }
 }
