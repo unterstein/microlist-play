@@ -65,11 +65,10 @@ public class Authentication extends Controller {
 
     public static class Login {
         @Formats.NonEmpty
-        // TODO i18n
-        @Required(message = "Email is required")
+        @Required(message = "error.mailRequired")
+        @Email(message = "error.noMail")
         public String email;
-        // TODO i18n
-        @Required(message = "Password is needed")
+        @Required(message = "password.required")
         public String password;
         public boolean remember;
 
@@ -93,10 +92,8 @@ public class Authentication extends Controller {
         public String repassword;
 
         @Formats.NonEmpty
-        // TODO i18n
-        @Required(message = "Email is required")
-        // TODO i18n
-        @Email(message = "The entered Email is not an email")
+        @Required(message = "error.mailRequired")
+        @Email(message = "error.noMail")
         public String email;
 
         public String validate() {
