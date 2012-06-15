@@ -149,6 +149,11 @@ function customAfterAjaxHandler() {
             $(document).click();
         }
     });
+    $('.task .taskTitle').unbind('click');
+    $('.task .taskTitle').click(function(event) {
+        $(this).siblings('.icon-edit').click();
+        return false;
+    });
 }
 
 $(function() {
