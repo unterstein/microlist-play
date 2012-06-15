@@ -178,6 +178,10 @@ function customAfterAjaxHandler() {
         var selectedTask = $(element).attr('id').replace('taskid_', '');
         updateTaskDueDate(element, selectedTask, $(this).val())
     });
+    $('.task .btn.reset').click(function() {
+        var textArea = $(this).parent().siblings('.modal-body').find('textarea');
+        $(textArea).val($(textArea).attr('initial'));
+    });
 }
 
 $(function() {

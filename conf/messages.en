@@ -24,3 +24,4 @@ welcome=Welcome to the microlist application:
 hello=Hello
 time.format=dd.MM.yyyy
 #time.format.jquery=dd.mm.yy
+task.description.title=Edit your description
