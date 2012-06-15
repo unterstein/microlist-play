@@ -199,6 +199,10 @@ function customAfterAjaxHandler() {
     $('.modal.fade').on('hide', function() {
         clearModal(this);
     });
+    $('.modal.fade').unbind('shown');
+    $('.modal.fade').on('shown', function() {
+        $(this).find('.modal-body').find('textarea').focusEnd();
+    });
     $('.task .btn.save').unbind('click');
     $('.task .btn.save').click(function() {
         var element = $(this).parents('.task');
