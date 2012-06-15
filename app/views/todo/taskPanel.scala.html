@@ -3,7 +3,7 @@
 @import helper._
 @import helper.twitterBootstrap._
 
-<div class="well task span8 checkboxParent">
+<div class="well task span8 checkboxParent custom">
   <input class="taskbox" type="checkbox" @if(task.finished) {checked} id="task_@task.id"  name="finished"  data-task="@task.id" />
   <label class="checkbox toggle" for="task_@task.id"></label>
   <span>

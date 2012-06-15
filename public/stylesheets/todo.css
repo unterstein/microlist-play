@@ -30,13 +30,15 @@ body {
 }
 
 input.newTask {
-  width: 800px;
+  width: 100%;
 }
 
 .task {
   background-color: #DDD;
-  padding-top: 5px;
-  padding-bottom: 5px;
+}
+
+.span8.custom {
+  padding: 5px 20px;
   margin-left: 0px;
 }
 

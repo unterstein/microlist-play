@@ -3,15 +3,16 @@
 @import helper._
 @import helper.twitterBootstrap._
 
-<h2 class="span8 title">@project.name</h2>
-@inputText(
-    new Form(project.getClass)("title"),
-    '_label -> null,
-    'placeholder -> Messages("task.new"),
-    'class -> "span8 newTask",
-    'projectid -> project.id
-)
-
+<h2 class="span8 title custom">@project.name</h2>
+<div class="span8 custom">
+  @inputText(
+      new Form(project.getClass)("title"),
+      '_label -> null,
+      'placeholder -> Messages("task.new"),
+      'class -> "span8 newTask",
+      'projectid -> project.id
+  )
+</div>
 @{
   val tasks = Task.getTasksByProject(project)
   tasks.map { task =>
