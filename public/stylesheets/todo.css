@@ -25,8 +25,12 @@ body {
   width: 175px;
 }
 .side.nav .icon-trash,
-.side.nav .icon-edit {
+.side.nav .icon-edit,
+.task .icon-trash,
+.task .icon-edit {
   float: right;
+  width: 1.25em;
+  cursor: pointer;
 }
 
 input.newTask {

@@ -11,7 +11,6 @@ import org.joda.time.DateTime;
 import play.data.format.Formats;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
-import controllers.MicroSession;
 
 @Entity
 public class Task extends Model {
@@ -21,10 +20,6 @@ public class Task extends Model {
     @Required
     @Formats.NonEmpty
     public String title;
-
-    @OneToOne
-    @Required
-    public User user;
 
     public String description;
     public boolean finished;
@@ -45,7 +40,6 @@ public class Task extends Model {
     public static void create(final String title, final Project project) {
         Task task = new Task();
         task.title = title;
-        task.user = MicroSession.getUser();
         task.project = Project.getProjectById(project.id);
         task.save();
     }

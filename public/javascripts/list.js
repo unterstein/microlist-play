@@ -84,8 +84,22 @@ function customAfterAjaxHandler() {
             });
         }
     });
+    $('.task .taskbox').unbind('change');
     $('.task .taskbox').change(function(event) {
         ajaxCall(jsRoutes.controllers.TodoList.changeTaskState($(this).data("task"), $(this).is(':checked')));
+    });
+    $('.task .icon-trash').unbind('click');
+    $('.task .icon-trash').click(function(event) {
+        var element = $(this).parents('li');
+        var selectedProject = $(element).attr('id').replace('project_', '');
+        var deletedMyself = $(element).hasClass('active');
+        ajaxCall(jsRoutes.controllers.TodoList.removeProject(selectedProject), function(data) {
+            if(deletedMyself) {
+                window.location.href = $('.side.nav li:first a').attr('href');
+            }
+            replaceElement($(element), '');
+        });
+        return false;
     });
 }
 
