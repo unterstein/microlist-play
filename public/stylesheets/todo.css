@@ -27,6 +27,12 @@ body > .container {
 .side.nav input {
   width: 175px;
 }
+
+.side.nav li a {
+  height: 28px;
+  line-height: 28px;
+}
+
 .icon {
   font-size: 15px;
   float: right;
