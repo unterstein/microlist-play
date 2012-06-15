@@ -13,7 +13,7 @@ function toggleProject(element, event) {
     } else {
         var id = $(element).parents('li').attr('id').replace('project_', '');
         var name = $(element).siblings("input").val();
-        var selectedProjectId = $(element).parents('li').siblings('li.active').attr('id');
+        var selectedProjectId = $(element).parents('ul').children('li.active').attr('id');
         if(selectedProjectId != undefined) {
             var selectedProject = selectedProjectId.replace('project_', '');
             updateProject($(element).parents('li'), id, name, selectedProject);
