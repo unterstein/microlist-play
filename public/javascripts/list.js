@@ -1,4 +1,4 @@
-function toggleText(element, event) {
+function toggleProject(element, event) {
     $(element).siblings("span").toggle();
     $(element).siblings("input").toggle();
     if($(element).siblings("input").is(":visible")) {
@@ -6,7 +6,7 @@ function toggleText(element, event) {
             var selector = $(element).siblings("input");
             if($(selector)[0] != $(event.target)[0] && $(event.target).parents().index($(selector)) == -1) {
                 if($(selector).is(":visible")) {
-                    toggleText(element);
+                    toggleProject(element);
                 }
             }
         })
@@ -44,7 +44,7 @@ function addProject(element) {
 function customAfterAjaxHandler() {
     $('.side.nav .icon-edit').unbind('click');
     $('.side.nav .icon-edit').click(function(event) {
-        toggleText($(this), event);
+        toggleProject($(this), event);
         return false;
     });
     $('.side.nav input').unbind('keyup');
@@ -56,7 +56,7 @@ function customAfterAjaxHandler() {
     });
     $('.side.nav span').unbind('click');
     $('.side.nav span').click(function(event) {
-        toggleText($(this).siblings('.icon-edit'), event);
+        toggleProject($(this).siblings('.icon-edit'), event);
         return false;
     });
     $('.side.nav .icon-trash').unbind('click');

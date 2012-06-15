@@ -7,6 +7,7 @@
   <input class="taskbox" type="checkbox" @if(task.finished) {checked} id="task_@task.id"  name="finished"  data-task="@task.id" />
   <label class="checkbox toggle" for="task_@task.id"></label>
   <span>
-    @task.title
+    <span>@task.title</span>
+    <input type="text" style="display:none;" value="@task.title" />
   </span>
 </div>
