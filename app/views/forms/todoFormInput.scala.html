@@ -1,0 +1,25 @@
+@(elements: helper.FieldElements)
+
+@**************************************************
+* Generate input according twitter bootsrap rules *
+**************************************************@
+@if("None".equals(elements.args.get('_checkbox).toString()) || elements.args.get('_checkbox).toString().equals("Some(false)")) {
+  @* normal input fields *@
+  <div class="control-group @if(elements.hasErrors) {error}">
+    <label class="control-label" for="@elements.id">@elements.label@if(elements.args.get('_required).toString().equals("Some(true)")) {*}:</label>
+    <div class="controls">
+          @elements.input
+          <span class="help-inline">@elements.errors.mkString(", ")</span> 
+    </div>
+  </div>
+} else {
+  @* checkboxes *@
+  <div class="control-group @if(elements.hasErrors) {error}">
+    <label class="control-label" for="@elements.id">@elements.label@if(elements.args.get('_required).toString().equals("Some(true)")) {*}:</label>
+    <div class="controls" style="position: relative; color: #8b8f97; line-height: 21px; font-size: 12px;">
+          <input type="checkbox" @if("Some(true)".equals(elements.args.get('_checked).toString())) {checked} id="@elements.id" />
+          <label class="checkbox toggle" for="@elements.id"></label>
+          <span class="help-inline">@elements.errors.mkString(", ")</span> 
+    </div>
+  </div>
+}

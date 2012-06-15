@@ -3,7 +3,7 @@
 @import helper._
 @import helper.twitterBootstrap._
 
-@implicitFieldConstructor = @{ FieldConstructor(forms.twitterBootstrapInput.render) }
+@implicitFieldConstructor = @{ FieldConstructor(forms.todoFormInput.render) }
 
 @helper.form(routes.Authentication.loginUser,'class -> "form-horizontal") {
   <fieldset>
@@ -29,7 +29,9 @@
     @checkbox(
         loginForm("remember"),
         '_label -> Messages("remember"),
-        '_required -> false
+        '_required -> false,
+        '_checkbox -> true,
+        '_checked -> true
     )
     <button type="submit" class="btn btn-primary btn-large">@Messages("login")</button>
   </fieldset>
