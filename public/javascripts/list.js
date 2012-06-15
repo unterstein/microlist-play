@@ -154,6 +154,20 @@ function customAfterAjaxHandler() {
         $(this).siblings('.icon-edit').click();
         return false;
     });
+    $('.task .icon-time').unbind('click');
+    $('.task .icon-time').click(function(event) {
+        $($(this).siblings('input[name="dueDate"]')).datepicker("show");
+        return false;
+    });
+    $('.task input[name="dueDate"]').datepicker({
+        changeMonth : false,
+        changeYear : false,
+        dateFormat: "dd.mm.yy"
+    });
+    $('.task input[name="dueDate"]').unbind("change");
+    $('.task input[name="dueDate"]').change(function() {
+        alert($(this).val());
+    });
 }
 
 $(function() {
