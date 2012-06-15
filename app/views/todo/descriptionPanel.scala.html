@@ -3,7 +3,12 @@
 @import helper._
 @import helper.twitterBootstrap._
 
+@implicitFieldConstructor = @{ FieldConstructor(forms.descriptionFormInput.render) }
 
-@helper.form(routes.Authentication.loginUser,'class -> "form-horizontal") {
-  <textarea name="description" initial="@task.description">@task.description</textarea>
-}
+<form class="description-form">
+  @textarea(
+      descriptionForm("description"),
+      'placeholder -> Messages("task.description"),
+      '_text -> task.description
+  )
+</form>

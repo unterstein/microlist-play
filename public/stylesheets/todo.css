@@ -72,6 +72,12 @@ input.newTask {
   margin-bottom: 15px;
 }
 
+.description-form textarea {
+  width: 100%;
+  min-height: 300px;
+  margin-left: -5px;
+}
+
 /**
  * checkboxes
  */

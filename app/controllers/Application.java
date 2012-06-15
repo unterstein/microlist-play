@@ -30,7 +30,8 @@ public class Application extends Controller {
                 controllers.routes.javascript.Tasks.updateTask(),
                 controllers.routes.javascript.Tasks.updateTaskName(),
                 controllers.routes.javascript.Tasks.updateTaskState(),
-                controllers.routes.javascript.Tasks.updateTaskDueDate()
+                controllers.routes.javascript.Tasks.updateTaskDueDate(),
+                controllers.routes.javascript.Tasks.updateTaskDescription()
                 ));
     }
 }

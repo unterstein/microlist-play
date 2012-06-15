@@ -5,7 +5,7 @@
 
 @implicitFieldConstructor = @{ FieldConstructor(forms.todoFormInput.render) } 
 
-@helper.form(routes.Authentication.registerUser,'class -> "form-horizontal") {
+<form class="form-horizontal">
   <fieldset>
     <legend>@Messages("register")</legend>
     @if(registerForm.hasGlobalErrors) { 
@@ -34,4 +34,4 @@
     )
     <button class="btn btn-primary btn-large" onClick="register(this); return false;">@Messages("register")</button>
   </fieldset>
-}
+</form>

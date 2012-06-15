@@ -86,6 +86,21 @@ public class Tasks extends Controller {
         }
     }
 
+    public static Result updateTaskDescription(Long taskId, String description) {
+        Task task = checkAndGetTask(taskId);
+        if (task != null) {
+            task.description = description;
+            Task.save(task);
+            return ok(taskPanel.render(task));
+        } else {
+            return badRequest();
+        }
+    }
+
+    public static Result updateTaskDescriptionNull(Long taskId) {
+        return updateTaskDescription(taskId, null);
+    }
+
     public static Result updateTask(Long taskId) {
         final Form<Task> taskForm = Controller.form(Task.class).bindFromRequest();
         User user = MicroSession.getUser();

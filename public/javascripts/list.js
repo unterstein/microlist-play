@@ -59,6 +59,15 @@ function updateTaskName(element, id, name) {
     });
 }
 
+function updateTaskDescription(element, id, description) {
+    ajaxCall(jsRoutes.controllers.Tasks.updateTaskDescription(id, description), function(data) {
+        $(element).find('.modal.fade').modal('hide', function() {
+            replaceElement(element, data);
+            customAfterAjaxHandler();
+        });
+    });
+}
+
 function updateTaskDueDate(element, id, date) {
     ajaxCall(jsRoutes.controllers.Tasks.updateTaskDueDate(id, date), function(data) {
         replaceElement(element, data);
@@ -181,16 +190,24 @@ function customAfterAjaxHandler() {
     $('.task .btn.reset, .task button.reset').unbind('click');
     $('.task .btn.reset, .task button.reset').click(function() {
         clearModal($(this).parent('.modal.fade'));
+        return false;
     });
     $('.modal.fade').unbind('hide');
     $('.modal.fade').on('hide', function() {
         clearModal(this);
     });
+    $('.task .btn.save').unbind('click');
+    $('.task .btn.save').click(function() {
+        var element = $(this).parents('.task');
+        var selectedTask = $(element).attr('id').replace('taskid_', '');
+        updateTaskDescription(element, selectedTask, $(this).parents('.modal.fade').find('.description-form textarea').val());
+        return false;
+    });
 }
 
 function clearModal(element) {
     var textArea = $(element).find('.modal-body').find('textarea');
-    $(textArea).val($(textArea).attr('initial'));
+    $(textArea).val($(textArea).data('initial'));
 }
 
 $(function() {

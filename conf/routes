@@ -3,32 +3,34 @@
 # ~~~~
 
 # pages
-GET     /                                  controllers.Application.index()
-GET     /todo                              controllers.TodoList.todoDefault()
-GET     /todo/:id                          controllers.TodoList.todo(id : Long)
+GET     /                                             controllers.Application.index()
+GET     /todo                                         controllers.TodoList.todoDefault()
+GET     /todo/:id                                     controllers.TodoList.todo(id : Long)
 
 # Authentication
-GET     /login                             controllers.Authentication.login()
-GET     /logout                            controllers.Authentication.logout()
-POST    /login                             controllers.Authentication.loginUser()
-POST    /register                          controllers.Authentication.registerUser()
-GET     /registerpanel                     controllers.Authentication.registerPanel()
+GET     /login                                        controllers.Authentication.login()
+GET     /logout                                       controllers.Authentication.logout()
+POST    /login                                        controllers.Authentication.loginUser()
+POST    /register                                     controllers.Authentication.registerUser()
+GET     /registerpanel                                controllers.Authentication.registerPanel()
 
 # Todo
-PUT     /todo/:id/:name/:selectedProject   controllers.TodoList.updateProject(id : Long, name : String, selectedProject : Long)
-POST    /todo/:lastActiveProject           controllers.TodoList.addProject(lastActiveProject : Long)
-DELETE  /todo/:id                          controllers.TodoList.removeProject(id : Long)
+PUT     /todo/:id/:name/:selectedProject              controllers.TodoList.updateProject(id : Long, name : String, selectedProject : Long)
+POST    /todo/:lastActiveProject                      controllers.TodoList.addProject(lastActiveProject : Long)
+DELETE  /todo/:id                                     controllers.TodoList.removeProject(id : Long)
 
 # Tasks
-POST    /task/:taskId/:taskName            controllers.Tasks.addTask(taskId : Long, taskName : String)
-DELETE  /task/:id                          controllers.Tasks.removeTask(id : Long)
-PUT     /task/:taskId                      controllers.Tasks.updateTask(taskId : Long)
-PUT     /task/:taskId/state/:state         controllers.Tasks.updateTaskState(taskId : Long, state : String)
-PUT     /task/:taskId/name/:name           controllers.Tasks.updateTaskName(taskId : Long, name : String)
-PUT     /task/:taskId/date/:dueDate        controllers.Tasks.updateTaskDueDate(taskId : Long, dueDate : String)
+POST    /task/:taskId/:taskName                       controllers.Tasks.addTask(taskId : Long, taskName : String)
+DELETE  /task/:id                                     controllers.Tasks.removeTask(id : Long)
+PUT     /task/:taskId                                 controllers.Tasks.updateTask(taskId : Long)
+PUT     /task/:taskId/state/:state                    controllers.Tasks.updateTaskState(taskId : Long, state : String)
+PUT     /task/:taskId/name/:name                      controllers.Tasks.updateTaskName(taskId : Long, name : String)
+PUT     /task/:taskId/date/:dueDate                   controllers.Tasks.updateTaskDueDate(taskId : Long, dueDate : String)
+PUT     /task/:taskId/description/:description        controllers.Tasks.updateTaskDescription(taskId : Long, description : String)
+PUT     /task/:taskId/description/                    controllers.Tasks.updateTaskDescriptionNull(taskId : Long)
 
 # Javascript routing
-GET     /assets/javascripts/routes         controllers.Application.jsRoutes()
+GET     /assets/javascripts/routes                    controllers.Application.jsRoutes()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file                      controllers.Assets.at(path="/public", file)
+GET     /assets/*file                                 controllers.Assets.at(path="/public", file)
