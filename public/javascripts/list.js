@@ -61,10 +61,13 @@ function updateTaskName(element, id, name) {
 
 function updateTaskDescription(element, id, description) {
     ajaxCall(jsRoutes.controllers.Tasks.updateTaskDescription(id, description), function(data) {
-        $(element).find('.modal.fade').modal('hide', function() {
+        var dialog = $(element).find('.modal.fade');
+        $(dialog).on('hidden', function() {
             replaceElement(element, data);
             customAfterAjaxHandler();
+            $(dialog).unbind('hidden');
         });
+        $(dialog).modal('hide');
     });
 }
 
