@@ -1,5 +1,5 @@
 /**
- * Micromata
+ * Custom CSS
  */
 body {
   background: url(../images/bg.jpg) top center no-repeat;
@@ -89,7 +89,7 @@ input.newTask {
 }
 
 /**
- * checkboxes
+ * Checkboxes
  */
 .checkboxParent {
   position: relative;
