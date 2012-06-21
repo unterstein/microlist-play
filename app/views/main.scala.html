@@ -71,35 +71,39 @@
   </div>
 
   <div class="container">
-
-    <div class="span12 well">
-
-      @if(flash.contains("success")) {
-      <div class="alert alert-success">
-        <button class="close" data-dismiss="alert">×</button>
-        @flash.get("success")
+    <div class="row">
+      <div class="span12">
+        <div class="well">
+          @if(flash.contains("success")) {
+          <div class="alert alert-success">
+            <button class="close" data-dismiss="alert">×</button>
+            @flash.get("success")
+          </div>
+          }
+    
+          @if(flash.contains("error")) {
+          <div class="alert alert-error">
+            <button class="close" data-dismiss="alert">×</button>
+            @flash.get("error")
+          </div>
+          }
+    
+          @content
+        </div>
       </div>
-      }
-
-      @if(flash.contains("error")) {
-      <div class="alert alert-error">
-        <button class="close" data-dismiss="alert">×</button>
-        @flash.get("error")
-      </div>
-      }
-
-      @content
+  
+      <!-- Footer
+        ================================================== -->
+      <footer class="footer span12">
+        <div class="well">
+          <p class="pull-right">
+            <a href="#" id="link-top"><i class="icon-hand-up"></i> @Messages("back.top")</a>
+          </p>
+          <p><i class="icon-heart"></i> @Messages("footer.left")</p>
+        </div>
+      </footer>
+  
     </div>
-
-    <!-- Footer
-      ================================================== -->
-    <footer class="footer span12 well">
-      <p class="pull-right">
-        <a href="#" id="link-top"><i class="icon-hand-up"></i> @Messages("back.top")</a>
-      </p>
-      <p><i class="icon-heart"></i> @Messages("footer.left")</p>
-    </footer>
-
   </div>
   <!-- /container -->
 </body>
