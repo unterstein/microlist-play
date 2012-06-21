@@ -33,7 +33,9 @@
 @main(scripts, navigation) {
   <div class="row">
     <div class="span9 taskList">
-      @views.html.todo.taskListPanel(selectedProject)
+      <div class="row">
+        @views.html.todo.taskListPanel(selectedProject)
+      </div>
     </div>
     <div class="span3">
       <h2>@Messages("projects.title")</h2>
