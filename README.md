@@ -1,6 +1,6 @@
- **************************************************************
- *                       microlist-play                       *
- **************************************************************
++==========================================================================+
++                              microlist-play                              +
++==========================================================================+
 
 This source code is licensed under the terms of the Gnu Public License, version 3. See http://www.gnu.org/licenses/.
 
@@ -8,9 +8,9 @@ This source code is licensed under the terms of the Gnu Public License, version 
 Microlist - simple todo list application with playframework.org
 
 
- **************************************************************
- *                          credits                           *
- **************************************************************
++==========================================================================+
++                                 credits                                  +
++==========================================================================+
 
 Playframework:
 http://playframework.org
