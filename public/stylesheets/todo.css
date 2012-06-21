@@ -46,6 +46,12 @@ body > .container {
   right: 21px;
 }
 
+@media (min-width: 768px) {
+  .span3.sidebar {
+    margin-left: -19px;
+  }
+}
+
 .side.nav input {
   width: 175px;
 }
