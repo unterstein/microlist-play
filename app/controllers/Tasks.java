@@ -89,7 +89,7 @@ public class Tasks extends Controller {
         if (task != null) {
             task.title = title;
             Task.save(task);
-            return ok(taskPanel.render(task));
+            return ok(taskPanel.render(Task.getTasksById(task.id)));
         } else {
             return badRequest();
         }
@@ -100,7 +100,7 @@ public class Tasks extends Controller {
         if (task != null) {
             task.dueDate = DateTime.parse(dueDate, DateTimeFormat.forPattern(Messages.get("time.format")));
             Task.save(task);
-            return ok(taskPanel.render(task));
+            return ok(taskPanel.render(Task.getTasksById(task.id)));
         } else {
             return badRequest();
         }
@@ -111,7 +111,7 @@ public class Tasks extends Controller {
         if (task != null) {
             task.description = description;
             Task.save(task);
-            return ok(taskPanel.render(task));
+            return ok(taskPanel.render(Task.getTasksById(task.id)));
         } else {
             return badRequest();
         }

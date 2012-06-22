@@ -34,6 +34,7 @@ import play.data.format.Formats;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 import play.i18n.Messages;
+import security.Encryption;
 
 @Entity
 public class Task extends Model {
@@ -52,6 +53,16 @@ public class Task extends Model {
     @Required
     public Project project;
 
+    private void prePersist() {
+        this.title = Encryption.encode(this.title);
+        this.description = Encryption.encode(this.description);
+    }
+
+    private void postConstruct() {
+        this.title = Encryption.decode(this.title);
+        this.description = Encryption.decode(this.description);
+    }
+
     public String niceDueDate() {
         return DateTimeFormat.forPattern(Messages.get("time.format")).print(this.dueDate);
     }
@@ -68,7 +79,7 @@ public class Task extends Model {
         Task task = new Task();
         task.title = title;
         task.project = Project.getProjectById(project.id);
-        task.save();
+        Task.save(task);
     }
 
     /**
@@ -78,7 +89,11 @@ public class Task extends Model {
      * @return
      */
     public static List<Task> getTasksByProject(Project project) {
-        return find.where().eq("project", project).findList();
+        List<Task> tasks = find.where().eq("project", project).findList();
+        for (Task task : tasks) {
+            task.postConstruct();
+        }
+        return tasks;
     }
 
     /**
@@ -88,7 +103,9 @@ public class Task extends Model {
      * @return
      */
     public static Task getTasksById(Long id) {
-        return find.where().eq("id", id).findUnique();
+        Task task = find.where().eq("id", id).findUnique();
+        task.postConstruct();
+        return task;
     }
 
     /**
@@ -106,6 +123,7 @@ public class Task extends Model {
      * @param task
      */
     public static void save(Task task) {
+        task.prePersist();
         task.save();
     }
 
