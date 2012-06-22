@@ -22,7 +22,7 @@
 
 @(task : Task)
 
-<div class="span8 task" id="taskid_@task.id">
+<div class="span8 task" id="taskid_@task.id" finished="@if(task.finished) {true} else {false}">
   <div class="well checkboxParent">
     <input class="taskbox" type="checkbox" @if(task.finished) {checked} id="task_@task.id"  name="finished"  data-task="@task.id" />
     <label class="checkbox toggle" for="task_@task.id"></label>
@@ -35,11 +35,11 @@
       <a data-toggle="modal" href="#modalTask_@task.id" class="comment @if(task.description == null || task.description.length == 0) { inactive }"><i class="icon icon-comment"></i></a>
       @if(task.dueDate != null) { <span class="icon time">@task.niceDueDate</span> } else { <i class="icon icon-time time"></i> }
     </span>
-  
+    </div>
     <!-- comment modal dialog -->
     <div class="modal fade" id="modalTask_@task.id" style="display: none;">
       <div class="modal-header">
-        <button class="close reset" data-dismiss="modal">×</button>
+        <button class="close reset" data-dismiss="modal" onClick="return false;">×</button>
         <h3>@Messages("task.description.title")</h3>
       </div>
       <div class="modal-body">
@@ -48,9 +48,9 @@
         </p>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn reset" data-dismiss="modal">@Messages("close")</a>
-        <a href="#" class="btn btn-primary save">@Messages("save.changes")</a>
+        <a href="#" class="btn reset" data-dismiss="modal" onClick="return false;">@Messages("close")</a>
+        <a href="#" class="btn btn-primary save" onClick="return false;">@Messages("save.changes")</a>
       </div>
     </div>
-  </div>
+
 </div>

@@ -32,6 +32,11 @@ body > .container {
   padding-bottom: 40px;
 }
 
+.taskList .finished .checkboxParent {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+
 .alert {
   position: relative;
 }

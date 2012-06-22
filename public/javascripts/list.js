@@ -123,6 +123,20 @@ function addProject(element) {
 }
 
 function customAfterAjaxHandler() {
+    // come on, lets order the entries fancy ;-)
+    $('.taskList .task[finished="true"]').each(function() {
+        var element = $(this);
+        $(this).remove();
+        $(element).addClass('finished');
+        $('.taskList .row').append($(element));
+    });
+    $('.taskList .task[finished="false"]').each(function() {
+        if($(this).hasClass('finished')) {
+            console.log("invalidate");
+            $(this).removeClass('finished');
+        }
+    });
+    // handle click events
     $('.side.nav .icon-edit').unbind('click');
     $('.side.nav .icon-edit').click(function(event) {
         toggleProject($(this), event);
@@ -168,7 +182,12 @@ function customAfterAjaxHandler() {
     });
     $('.task .taskbox').unbind('change');
     $('.task .taskbox').change(function(event) {
-        ajaxCall(jsRoutes.controllers.Tasks.updateTaskState($(this).data("task"), $(this).is(':checked')));
+        var finished = $(this).is(':checked');
+        var element = $(this);
+        ajaxCall(jsRoutes.controllers.Tasks.updateTaskState($(this).data("task"), finished), function() {
+            $(element).parents('.task').attr('finished', finished);
+            customAfterAjaxHandler();
+        });
     });
     $('.task .icon-trash').unbind('click');
     $('.task .icon-trash').click(function(event) {
