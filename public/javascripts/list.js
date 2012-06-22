@@ -132,7 +132,6 @@ function customAfterAjaxHandler() {
     });
     $('.taskList .task[finished="false"]').each(function() {
         if($(this).hasClass('finished')) {
-            console.log("invalidate");
             $(this).removeClass('finished');
         }
     });
