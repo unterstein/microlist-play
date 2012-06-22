@@ -22,7 +22,8 @@
 
 @(task : Task)
 
-<div class="well task span8 checkboxParent custom" id="taskid_@task.id">
+<div class="span8 task">
+<div class="well checkboxParent" id="taskid_@task.id">
   <input class="taskbox" type="checkbox" @if(task.finished) {checked} id="task_@task.id"  name="finished"  data-task="@task.id" />
   <label class="checkbox toggle" for="task_@task.id"></label>
   <span>
@@ -51,4 +52,5 @@
       <a href="#" class="btn btn-primary save">@Messages("save.changes")</a>
     </div>
   </div>
+</div>
 </div>

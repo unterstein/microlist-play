@@ -85,14 +85,10 @@ body > .container {
   text-decoration: none;
 }
 .task i {
-/*   color: #08C; */
+  color: #08C;
 }
 
-input.newTask {
-  width: 100%;
-}
-
-.task {
+.task > .well {
   background-color: #DDD;
 }
 
