@@ -28,7 +28,6 @@ import models.User;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
-import play.data.Form;
 import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -120,19 +119,6 @@ public class Tasks extends Controller {
 
     public static Result updateTaskDescriptionNull(Long taskId) {
         return updateTaskDescription(taskId, null);
-    }
-
-    public static Result updateTask(Long taskId) {
-        final Form<Task> taskForm = Controller.form(Task.class).bindFromRequest();
-        User user = MicroSession.getUser();
-        Task task = Task.getTasksById(taskId);
-        Project project = Project.getProjectById(task.project.id);
-        if (task != null && project.user.id == user.id) {
-            Task.updateUser(task.id, taskForm.get());
-            return ok(taskPanel.render(task));
-        } else {
-            return badRequest();
-        }
     }
 
     public static class Description {

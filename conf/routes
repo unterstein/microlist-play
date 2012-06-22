@@ -22,7 +22,6 @@ DELETE  /todo/:id                                     controllers.TodoList.remov
 # Tasks
 POST    /task/:taskId/:taskName                       controllers.Tasks.addTask(taskId : Long, taskName : String)
 DELETE  /task/:id                                     controllers.Tasks.removeTask(id : Long)
-PUT     /task/:taskId                                 controllers.Tasks.updateTask(taskId : Long)
 PUT     /task/:taskId/state/:state                    controllers.Tasks.updateTaskState(taskId : Long, state : String)
 PUT     /task/:taskId/name/:name                      controllers.Tasks.updateTaskName(taskId : Long, name : String)
 PUT     /task/:taskId/date/:dueDate                   controllers.Tasks.updateTaskDueDate(taskId : Long, dueDate : String)

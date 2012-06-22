@@ -100,13 +100,6 @@ function updateTaskDueDate(element, id, date) {
     });
 }
 
-function updateTask(element, id, task) {
-    ajaxCall(jsRoutes.controllers.Tasks.updateTask(id), function(data) {
-        replaceElement(element, data);
-        customAfterAjaxHandler();
-    }, function(data) {}, task);
-}
-
 function updateProject(element, id, name, selectedProject) {
     ajaxCall(jsRoutes.controllers.TodoList.updateProject(id, name, selectedProject), function(data) {
         replaceElement(element, data);
