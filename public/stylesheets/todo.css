@@ -24,7 +24,7 @@
  * Custom CSS
  */
 body {
-  background: url(../images/bg.jpg) top center no-repeat;
+  background: url(../images/bg.jpg) top center fixed no-repeat;
 }
 
 body > .container {
