@@ -229,7 +229,6 @@ function customAfterAjaxHandler() {
         var element = $(this).parents('.task');
         var selectedTask = $(element).attr('id').replace('taskid_', '');
         updateTaskDescription(element, selectedTask, $(this).parents('.modal.fade').find('.description-form textarea').val());
-        return false;
     });
 }
 
