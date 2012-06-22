@@ -215,7 +215,6 @@ function customAfterAjaxHandler() {
     $('.task .btn.reset, .task button.reset').unbind('click');
     $('.task .btn.reset, .task button.reset').click(function() {
         clearModal($(this).parent('.modal.fade'));
-        return false;
     });
     $('.modal.fade').unbind('hide');
     $('.modal.fade').on('hide', function() {
