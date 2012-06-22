@@ -49,7 +49,7 @@ function toggleProject(element, event) {
 }
 
 function toggleTask(element, event) {
-    $(element).siblings("span").toggle();
+    $(element).siblings("span.taskTitle").toggle();
     $(element).siblings("input[name='title']").toggle();
     if($(element).siblings("input[name='title']").is(":visible")) {
         $(document).click(function(event) { 
