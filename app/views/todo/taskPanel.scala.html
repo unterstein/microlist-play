@@ -22,7 +22,9 @@
 
 @(task : Task)
 
-<div class="span8 task" id="taskid_@task.id" finished="@if(task.finished) {true} else {false}">
+@import org.joda.time.DateMidnight
+
+<div class="span8 task" id="taskid_@task.id" finished="@if(task.finished) {true} else {false}" today="@if(task.dueDate != null && task.dueDate.toDateMidnight.equals(DateMidnight.now)) {true} else {false}">
   <div class="well checkboxParent">
     <input class="taskbox" type="checkbox" @if(task.finished) {checked} id="task_@task.id"  name="finished"  data-task="@task.id" />
     <label class="checkbox toggle" for="task_@task.id"></label>

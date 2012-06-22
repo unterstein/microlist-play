@@ -135,6 +135,11 @@ function customAfterAjaxHandler() {
             $(this).removeClass('finished');
         }
     });
+    $('.taskList .task[finished="false"]').each(function() {
+        if($(this).hasClass('finished')) {
+            $(this).removeClass('finished');
+        }
+    });
     // handle click events
     $('.side.nav .icon-edit').unbind('click');
     $('.side.nav .icon-edit').click(function(event) {
