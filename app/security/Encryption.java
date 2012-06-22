@@ -2,9 +2,9 @@ package security;
 
 import org.apache.commons.codec.binary.Base64;
 
+// TODO Use real encryption
 public class Encryption {
 
-    // TODO
     public static String encode(String original) {
         String result = null;
         if (original != null) {
@@ -13,7 +13,6 @@ public class Encryption {
         return result;
     }
 
-    // TODO
     public static String decode(String original) {
         String result = null;
         if (original != null) {
