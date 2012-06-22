@@ -158,7 +158,7 @@ function customAfterAjaxHandler() {
         var key = e.keyCode || e.which;
         if (key === 13) {
             var projectId = $(this).attr('projectid');
-            var element = $(this).parents('.taskList');
+            var element = $(this).parents('.taskList .row');
             ajaxCall(jsRoutes.controllers.Tasks.addTask(projectId, $(this).val()), function(data) {
                 updateElement($(element), data);
                 customAfterAjaxHandler();
