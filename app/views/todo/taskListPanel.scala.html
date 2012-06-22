@@ -35,9 +35,13 @@
       'projectid -> project.id
   )
 </div>
-@{
-  val tasks = Task.getTasksByProject(project)
-  tasks.map { task =>
-    views.html.todo.taskPanel(task)
+<div id="today" class="taskContainer"></div>
+<div id="normal" class="taskContainer">
+  @{
+    val tasks = Task.getTasksByProject(project)
+    tasks.map { task =>
+      views.html.todo.taskPanel(task)
+    }
   }
-}
+</div>
+<div id="finished" class="taskContainer"></div>

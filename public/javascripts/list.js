@@ -124,21 +124,24 @@ function addProject(element) {
 
 function customAfterAjaxHandler() {
     // come on, lets order the entries fancy ;-)
+    $('.taskList .task[today="true"]').each(function() {
+        var element = $(this);
+        $(this).remove();
+        $('.taskList #today').append($(element));
+    });
+    $('.taskList .task[finished="false"]').each(function() {
+        var parent = $(this).parents('.taskContainer');
+        if('finished' == parent.attr('id')) {
+            // please reorganize
+            var element = $(this);
+            $(this).remove();
+            $('.taskList #normal').append($(element));
+        }
+    });
     $('.taskList .task[finished="true"]').each(function() {
         var element = $(this);
         $(this).remove();
-        $(element).addClass('finished');
-        $('.taskList .row').append($(element));
-    });
-    $('.taskList .task[finished="false"]').each(function() {
-        if($(this).hasClass('finished')) {
-            $(this).removeClass('finished');
-        }
-    });
-    $('.taskList .task[finished="false"]').each(function() {
-        if($(this).hasClass('finished')) {
-            $(this).removeClass('finished');
-        }
+        $('.taskList #finished').append($(element));
     });
     // handle click events
     $('.side.nav .icon-edit').unbind('click');
