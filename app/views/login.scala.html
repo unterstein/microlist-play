@@ -33,7 +33,8 @@
     <div class="span6">
     @views.html.signin.loginPanel(form)
     </div>
-    <div class="span6"><a href="#" onClick="showRegisterPanel($('#register')); return false;">@Messages("register")?</a></div>
-    <div class="span6" id="register"></div>
+    <!-- TODO use span6 -->
+    <div class="span5"><a href="#" onClick="showRegisterPanel($('#register')); return false;">@Messages("register")?</a></div>
+    <div class="span5" id="register"></div>
   </div>
 }
