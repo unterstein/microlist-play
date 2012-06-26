@@ -34,7 +34,6 @@ import play.data.format.Formats;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 import play.i18n.Messages;
-import security.Encryption;
 
 @Entity
 public class Task extends Model {
@@ -52,16 +51,6 @@ public class Task extends Model {
     @OneToOne
     @Required
     public Project project;
-
-    private void prePersist() {
-        this.title = Encryption.encode(this.title);
-        this.description = Encryption.encode(this.description);
-    }
-
-    private void postConstruct() {
-        this.title = Encryption.decode(this.title);
-        this.description = Encryption.decode(this.description);
-    }
 
     public String niceDueDate() {
         return DateTimeFormat.forPattern(Messages.get("time.format")).print(this.dueDate);
@@ -89,11 +78,7 @@ public class Task extends Model {
      * @return
      */
     public static List<Task> getTasksByProject(Project project) {
-        List<Task> tasks = find.where().eq("project", project).findList();
-        for (Task task : tasks) {
-            task.postConstruct();
-        }
-        return tasks;
+        return find.where().eq("project", project).findList();
     }
 
     /**
@@ -104,7 +89,6 @@ public class Task extends Model {
      */
     public static Task getTasksById(Long id) {
         Task task = find.where().eq("id", id).findUnique();
-        task.postConstruct();
         return task;
     }
 
@@ -123,7 +107,6 @@ public class Task extends Model {
      * @param task
      */
     public static void save(Task task) {
-        task.prePersist();
         task.save();
     }
 
