@@ -5,15 +5,15 @@
 
 create table project (
   id                        bigint auto_increment not null,
-  name                      varchar(255),
+  name                      varbinary(255),
   user_id                   bigint,
   constraint pk_project primary key (id))
 ;
 
 create table task (
   id                        bigint auto_increment not null,
-  title                     varchar(255),
-  description               varchar(255),
+  title                     varbinary(255),
+  description               varbinary(255),
   finished                  tinyint(1) default 0,
   due_date                  datetime,
   project_id                bigint,
