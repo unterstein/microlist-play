@@ -30,6 +30,8 @@ import javax.persistence.OneToOne;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
+import com.avaje.ebean.annotation.Encrypted;
+
 import play.data.format.Formats;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -37,14 +39,18 @@ import play.i18n.Messages;
 
 @Entity
 public class Task extends Model {
+
     @Id
     public Long id;
 
     @Required
     @Formats.NonEmpty
+    @Encrypted
     public String title;
 
+    @Encrypted
     public String description;
+
     public boolean finished;
     public DateTime dueDate;
 

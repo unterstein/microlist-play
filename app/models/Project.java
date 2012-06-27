@@ -27,6 +27,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.avaje.ebean.annotation.Encrypted;
+
 import controllers.MicroSession;
 
 import play.data.format.Formats;
@@ -42,6 +44,7 @@ public class Project extends Model {
 
     @Required
     @Formats.NonEmpty
+    @Encrypted
     public String name;
 
     @OneToOne

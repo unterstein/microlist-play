@@ -22,7 +22,7 @@ create table task (
 
 create table user (
   id                        bigint auto_increment not null,
-  password                  varchar(255),
+  password                  varbinary(255),
   email                     varchar(255),
   constraint uq_user_email unique (email),
   constraint pk_user primary key (id))

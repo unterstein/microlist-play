@@ -30,6 +30,8 @@ import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 import play.i18n.Messages;
 
+import com.avaje.ebean.annotation.Encrypted;
+
 @Entity
 public class User extends Model {
 
@@ -38,6 +40,7 @@ public class User extends Model {
 
     @Required
     @Formats.NonEmpty
+    @Encrypted
     public String password;
 
     @Required
