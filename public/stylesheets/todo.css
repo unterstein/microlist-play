@@ -51,6 +51,10 @@ body > .container {
   right: 21px;
 }
 
+.todo_success {
+  margin-left: 30px;
+}
+
 @media (min-width: 768px) {
   .span3.sidebar {
     margin-left: -19px;
