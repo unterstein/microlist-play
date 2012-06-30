@@ -19,16 +19,26 @@
  * @license     http://www.gnu.org/licenses/gpl.html GPLv3
  * @project     microlist-play
  */
+import play.Configuration;
+import play.Logger;
+
 import com.avaje.ebean.config.EncryptKey;
 import com.avaje.ebean.config.EncryptKeyManager;
 
 public class TodoEncryptKeyManager implements EncryptKeyManager {
     private EncryptKey key;
+    private String keyAsString;
+
     @Override
     public void initialise() {
-        final String keyAsString = "";
+        try {
+            keyAsString = Configuration.root().getString("aes.key");
+            Logger.error(keyAsString);
+        } catch (Exception e) {
+            Logger.error("", e);
+        }
         key = new EncryptKey() {
-            
+
             @Override
             public String getStringValue() {
                 return keyAsString;
