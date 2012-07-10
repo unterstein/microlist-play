@@ -79,7 +79,7 @@ $(function() {
 function doAfterAjaxHandling() {
     $(function() {
       handleCaretPositions();
-      $('.alert-success').delay(5000).fadeToggle(1500);
+      $('.alert-success').delay(5000).fadeOut(1500);
     });
 }
 
