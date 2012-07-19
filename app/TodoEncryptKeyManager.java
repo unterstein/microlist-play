@@ -33,9 +33,8 @@ public class TodoEncryptKeyManager implements EncryptKeyManager {
     public void initialise() {
         try {
             keyAsString = Configuration.root().getString("aes.key");
-            Logger.error(keyAsString);
         } catch (Exception e) {
-            Logger.error("", e);
+            Logger.error("Unable to find configuration property aes.key", e);
         }
         key = new EncryptKey() {
 
