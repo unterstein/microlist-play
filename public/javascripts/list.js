@@ -128,7 +128,7 @@ function customAfterAjaxHandler() {
         $('.taskList #today').append($(element));
     });
     $('.taskList #overdue .task[overdue="false"], .taskList #today .task[today="false"], .taskList #finished .task[finished="false"]').each(function() {
-     // please reorganize
+        // please reorganize
         var element = $(this);
         $(this).remove();
         $('.taskList #normal').append($(element));
