@@ -26,7 +26,7 @@ function register(element) {
         } else {
             updateElement($(element).parents(".modal"), data);
         }
-    }, null, $(element).parents("form").serialize());
+    }, null, $(element).parents(".modal").find("form").serialize());
 }
 $(function() {
     $("#registerModal").on("hidden", function() {

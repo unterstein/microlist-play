@@ -25,7 +25,7 @@
 @import helper._
 @import helper.twitterBootstrap._
 
-@implicitFieldConstructor = @{ FieldConstructor(forms.todoFormInput.render) } 
+@implicitFieldConstructor = @{ FieldConstructor(forms.todoFormInput.render) }
 <div class="modal-header">
   <button class="close" data-dismiss="modal">×</button>
   @Messages("register")
@@ -57,7 +57,9 @@
           'placeholder -> Messages("repassword"),
           '_required -> true
       )
-      <button class="btn btn-primary btn-large" onClick="register(this); return false;">@Messages("register")</button>
     </fieldset>
   </form>
+</div>
+<div class="modal-footer">
+   <button class="btn btn-primary" onClick="register(this); return false;">@Messages("register")</button>
 </div>
