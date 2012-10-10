@@ -20,7 +20,7 @@
  * @project     microlist-play
  *@
 
-@(form: Form[Authentication.Login])
+@(loginForm: Form[Authentication.Login], registerForm: Form[Authentication.Register])
 
 @scripts = {
   <script type="text/javascript" src='@routes.Assets.at("javascripts/signin.js")'></script>
@@ -31,10 +31,10 @@
 @main(scripts, navigation) {
   <div class="row">
     <div class="span6">
-    @views.html.signin.loginPanel(form)
+      @views.html.signin.loginPanel(loginForm)
     </div>
-    <!-- TODO use span6 -->
-    <div class="span5"><a href="#" onClick="showRegisterPanel($('#register')); return false;">@Messages("register")?</a></div>
-    <div class="span5" id="register"></div>
+  </div>
+  <div id="registerModal" class="modal hide fade">
+    @views.html.signin.registerPanel(registerForm)
   </div>
 }

@@ -42,14 +42,14 @@ public class Authentication extends Controller {
         if (User.checkIfUserExsists(Controller.session(Secured.AUTH_SESSION))) {
             return Results.redirect(routes.TodoList.todoDefault());
         } else {
-            return ok(login.render(new Form<Authentication.Login>(Authentication.Login.class)));
+            return ok(login.render(new Form<Authentication.Login>(Authentication.Login.class), new Form<Authentication.Register>(Authentication.Register.class)));
         }
     }
 
     public static Result loginUser() {
         final Form<Login> loginForm = Controller.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
-            return Results.badRequest(login.render(loginForm));
+            return Results.badRequest(login.render(loginForm, new Form<Authentication.Register>(Authentication.Register.class)));
         } else {
             return sucessfullyLoggedIn(loginForm.get().email);
         }

@@ -19,22 +19,20 @@
  * @license     http://www.gnu.org/licenses/gpl.html GPLv3
  * @project     microlist-play
  */
-
-function showRegisterPanel(element) {
-    if(!$(element).find("form").length) {
-        ajaxCall(jsRoutes.controllers.Authentication.registerPanel(), function(data) {
-            updateElement(element, data);
-        });
-    } else {
-        updateElement(element, "");
-    }
-}
 function register(element) {
     ajaxCall(jsRoutes.controllers.Authentication.registerUser(), function(data) {
         if(data[0] == '/') {
             window.location.href=data;
         } else {
-            updateElement($(element).parents("form"), data);
+            updateElement($(element).parents(".modal"), data);
         }
     }, null, $(element).parents("form").serialize());
 }
+$(function() {
+    $("#registerModal").on("hidden", function() {
+        // clear dialog
+        ajaxCall(jsRoutes.controllers.Authentication.registerPanel(), function(data) {
+            updateElement($("#registerModal"), data);
+        });
+    });
+});
