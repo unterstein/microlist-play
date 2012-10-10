@@ -116,6 +116,10 @@ body > .container {
   margin: 5px 10px;
 }
 
+#overdue .time {
+  color: red;
+}
+
 /**
  * Checkboxes
  */
